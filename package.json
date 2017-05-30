@@ -1,0 +1,15 @@
+{
+  "name": "testapplication",
+  "version": "1.0.0",
+  "description": "test app",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies":{
+  	"express":"*",
+  	"body-parser":"*"
+  },
+  "author": "Me",
+  "license": "ISC"
+}
