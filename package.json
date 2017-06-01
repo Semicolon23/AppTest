@@ -1,7 +1,7 @@
 {
-  "name": "testapplication",
+  "name": "arena-games-beta-app",
   "version": "1.0.0",
-  "description": "test app",
+  "description": "web app for product testing by Arena Games LLC.",
   "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,6 @@
   	"express":"*",
   	"body-parser":"*"
   },
-  "author": "Me",
+  "author": "Arena Games LLC: Colin Munroe, Alexander Tieman, Liam Clift, Corbin Baker, Matt Clayton",
   "license": "ISC"
 }

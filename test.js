@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res){
-	res.send('Fucka u tieman');
+	res.send('Hello World');
 });
 
 
