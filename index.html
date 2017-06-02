@@ -1,9 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ARENA GAMES LLC</title>
-</head>
-<body>
-	<h1>This text comes from the index.html file</h1>
-</body>
+	<head>
+		<style>
+		body {background-color: grey;}
+		</style>
+	</head>
+	<body style="margin: 0px;">
+		<canvas id="myCanvas" style="z-index:1;" width=650 height=850></canvas>
+		<script>
+			var theCanvas = document.getElementById("myCanvas"),
+				c = theCanvas.getContext("2d"),
+				cardHeight=100, cardWidth=75, boardWidth=650, boardHeight=850, spacing=25,
+				ch=cardHeight, cw=cardWidth, bw=boardWidth, bh=boardHeight, s=spacing;
+				
+				c.font="12px Georgia";
+				
+				c.fillStyle="red";
+				c.fillRect(0,0,bw,(bh/2));
+				c.fillStyle="blue";
+				c.fillRect(0,((bh/2)+1),bw,(bh/2));
+				
+				c.fillStyle="black";
+				c.fillRect(((s*6)+ch+cw+(ch/2)),(bh/2)-(cw/2),ch,cw);
+				c.fillStyle="white";
+				c.fillText("Arena", ((s*6)+22+ch+cw+(ch/2)), (bh/2));
+				c.fillStyle="black";
+				c.fillRect(s,(s+(bh/2)+1),ch,cw);
+				c.fillStyle="white";
+				c.fillText("Reward Deck", s+15, ((s*2)+10+(bh/2)));
+				c.rect(((s*2)+ch), (s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
+				c.stroke();
+				c.fillText("Leader Area", ((s*2)+10+ch), (s+15+(bh/2)));
+				c.fillStyle="black";
+				c.fillRect((cw*6+s*4),(s+(bh/2)),cw,ch);
+				c.rect(s, ((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
+				c.stroke();
+				c.fillRect((cw*6+s*4),((s*2)+ch+(bh/2)),cw,ch);
+				c.rect(s, ((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+				c.stroke();
+				c.fillStyle="white";
+				c.fillText("Dungeon", (cw*6+s*4+5),(s+(bh/2)+12));
+				c.fillText("Support Area", s+12, ((s*1.5)+(bh/2)+ch+12));
+				c.fillText("Vault", (cw*6+s*4+5),((s*2)+ch+(bh/2)+12));
+				c.fillText("Council", s+12, ((s*3)+(bh/2)+(ch*2)+12));
+				
+				c.fillStyle="black";
+				c.fillRect(s,(bh-cw)-(s+(bh/2)+1),ch,cw);
+				c.fillStyle="white";
+				c.fillText("Reward Deck", s+15, (bh-s)-((s*2)+10+(bh/2)));
+				c.rect(((s*2)+ch), (bh-ch)-(s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
+				c.stroke();
+				c.fillText("Leader Area", ((s*2)+10+ch), (bh-cw)-(s+15+(bh/2)));
+				c.fillStyle="black";
+				c.fillRect((cw*6+s*4),(bh-ch)-(s+(bh/2)),cw,ch);
+				c.rect(s, (bh-s-ch)-((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
+				c.stroke();
+				c.fillRect((cw*6+s*4),(bh-ch)-((s*2)+ch+(bh/2)),cw,ch);
+				c.rect(s, (bh-s-ch)-((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+				c.stroke();
+				c.fillStyle="white";
+				c.fillText("Dungeon", (cw*6+s*4+5),(bh-cw)-(s+(bh/2)+12));
+				c.fillText("Support Area", s+12, (bh-cw-s)-((s*1.5)+(bh/2)+ch+12));
+				c.fillText("Vault", (cw*6+s*4+5),(bh-cw)-((s*2)+ch+(bh/2)+12));
+				c.fillText("Council", s+12, (bh-cw-s)-((s*3)+(bh/2)+(ch*2)+12));
+				
+				function getMousePos(theCanvas, event) {
+					var rect = theCanvas.getBoundingClientRect();
+					return {
+						x: event.clientX - rect.left,
+						y: event.clientY - rect.top
+					};
+				}
+				function isInside(pos, rect){
+					return pos.x > rect.x && pos.x < rect.x+rect.width && pos.y < rect.y+rect.heigth && pos.y > rect.y
+				}
+
+				var rect = {
+					x:250,
+					y:350,
+					width:200,
+					heigth:100
+				};
+
+				theCanvas.addEventListener('click', function(evt) {
+					var mousePos = getMousePos(theCanvas, evt);
+					debugger;
+					if (isInside(mousePos,rect)) {
+						alert('clicked inside rect');
+					}else{
+						alert('clicked outside rect');
+					}	
+				}, false);
+		</script>
+	</body>
 </html>
