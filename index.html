@@ -10,59 +10,98 @@
 		<script>
 			var theCanvas = document.getElementById("myCanvas"),
 				c = theCanvas.getContext("2d"),
-				cardHeight=100, cardWidth=75, boardWidth=650, boardHeight=850, spacing=25,
+				cardHeight=100, cardWidth=75, boardWidth=window.innerWidth, boardHeight=window.innerHeight, spacing=25,
 				ch=cardHeight, cw=cardWidth, bw=boardWidth, bh=boardHeight, s=spacing;
 				
-				c.font="12px Georgia";
+				(function() {
+			   // Start listening to resize events and draw canvas.
+			   initialize();
+				function initialize() {
+				   // Register an event listener to call the resizeCanvas() function 
+				   // each time the window is resized.
+				   window.addEventListener('resize', resizeCanvas, false);
+				   // Draw canvas border for the first time.
+				   resizeCanvas();
+				}
+
+				// Runs each time the DOM window resize event fires.
+				// Resets the canvas dimensions to match window,
+				// then draws the new borders accordingly.
+				function resizeCanvas() {
+						bw = window.innerWidth;
+						bh = window.innerHeight;
+						ch = bh/8;
+						cw = ch*7/10;
+						s=ch/6;
+						if(bh>900){
+							c.font="14px Georgia";
+						}
+						else if(bh>700){
+							c.font="12px Georgia";
+						}
+						else if(bh>500){
+							c.font="10px Georgia";
+						}
+						else if(bh>400){
+							c.font="8px Georgia";
+						}
+						theCanvas.width=bw;
+						theCanvas.height=bh;
+						redraw();
+					}
+				})();
 				
-				c.fillStyle="red";
-				c.fillRect(0,0,bw,(bh/2));
-				c.fillStyle="blue";
-				c.fillRect(0,((bh/2)+1),bw,(bh/2));
-				
-				c.fillStyle="black";
-				c.fillRect(((s*6)+ch+cw+(ch/2)),(bh/2)-(cw/2),ch,cw);
-				c.fillStyle="white";
-				c.fillText("Arena", ((s*6)+22+ch+cw+(ch/2)), (bh/2));
-				c.fillStyle="black";
-				c.fillRect(s,(s+(bh/2)+1),ch,cw);
-				c.fillStyle="white";
-				c.fillText("Reward Deck", s+15, ((s*2)+10+(bh/2)));
-				c.rect(((s*2)+ch), (s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
-				c.stroke();
-				c.fillText("Leader Area", ((s*2)+10+ch), (s+15+(bh/2)));
-				c.fillStyle="black";
-				c.fillRect((cw*6+s*4),(s+(bh/2)),cw,ch);
-				c.rect(s, ((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
-				c.stroke();
-				c.fillRect((cw*6+s*4),((s*2)+ch+(bh/2)),cw,ch);
-				c.rect(s, ((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
-				c.stroke();
-				c.fillStyle="white";
-				c.fillText("Dungeon", (cw*6+s*4+5),(s+(bh/2)+12));
-				c.fillText("Support Area", s+12, ((s*1.5)+(bh/2)+ch+12));
-				c.fillText("Vault", (cw*6+s*4+5),((s*2)+ch+(bh/2)+12));
-				c.fillText("Council", s+12, ((s*3)+(bh/2)+(ch*2)+12));
-				
-				c.fillStyle="black";
-				c.fillRect(s,(bh-cw)-(s+(bh/2)+1),ch,cw);
-				c.fillStyle="white";
-				c.fillText("Reward Deck", s+15, (bh-s)-((s*2)+10+(bh/2)));
-				c.rect(((s*2)+ch), (bh-ch)-(s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
-				c.stroke();
-				c.fillText("Leader Area", ((s*2)+10+ch), (bh-cw)-(s+15+(bh/2)));
-				c.fillStyle="black";
-				c.fillRect((cw*6+s*4),(bh-ch)-(s+(bh/2)),cw,ch);
-				c.rect(s, (bh-s-ch)-((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
-				c.stroke();
-				c.fillRect((cw*6+s*4),(bh-ch)-((s*2)+ch+(bh/2)),cw,ch);
-				c.rect(s, (bh-s-ch)-((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
-				c.stroke();
-				c.fillStyle="white";
-				c.fillText("Dungeon", (cw*6+s*4+5),(bh-cw)-(s+(bh/2)+12));
-				c.fillText("Support Area", s+12, (bh-cw-s)-((s*1.5)+(bh/2)+ch+12));
-				c.fillText("Vault", (cw*6+s*4+5),(bh-cw)-((s*2)+ch+(bh/2)+12));
-				c.fillText("Council", s+12, (bh-cw-s)-((s*3)+(bh/2)+(ch*2)+12));
+				function redraw(){
+					c.fillStyle="grey";
+					c.fillRect(0,0,bw*2,bh*2);
+					
+					c.fillStyle="red";
+					c.fillRect(0,0,bw,(bh/2));
+					c.fillStyle="blue";
+					c.fillRect(0,((bh/2)+1),bw,(bh/2));
+					
+					c.fillStyle="black";
+					c.fillRect(((s*6)+ch+cw+(ch/2)),(bh/2)-(cw/2),ch,cw);
+					c.fillStyle="white";
+					c.fillText("Arena", ((s*6)+22+ch+cw+(ch/2)), (bh/2));
+					c.fillStyle="black";
+					c.fillRect(s,(s+(bh/2)+1),ch,cw);
+					c.fillStyle="white";
+					c.fillText("Reward Deck", s+15, ((s*2)+10+(bh/2)));
+					c.fillStyle="black";
+					c.fillRect(((s*2)+ch), (s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
+					c.fillStyle="white";
+					c.fillText("Leader Area", ((s*2)+10+ch), (s+15+(bh/2)));
+					c.fillStyle="black";
+					c.fillRect((cw*6+s*4),(s+(bh/2)),cw,ch);
+					c.fillRect(s, ((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
+					c.fillRect((cw*6+s*4),((s*2)+ch+(bh/2)),cw,ch);
+					c.fillRect(s, ((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+					c.fillStyle="white";
+					c.fillText("Dungeon", (cw*6+s*4+5),(s+(bh/2)+12));
+					c.fillText("Support Area", s+12, ((s*1.5)+(bh/2)+ch+12));
+					c.fillText("Vault", (cw*6+s*4+5),((s*2)+ch+(bh/2)+12));
+					c.fillText("Council", s+12, ((s*3)+(bh/2)+(ch*2)+12));
+					
+					c.fillStyle="black";
+					c.fillRect(s,(bh-cw)-(s+(bh/2)+1),ch,cw);
+					c.fillStyle="white";
+					c.fillText("Reward Deck", s+15, (bh-s)-((s*2)+10+(bh/2)));
+					c.fillStyle="black";
+					c.fillRect(((s*2)+ch), (bh-ch)-(s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
+					c.fillStyle="white";
+					c.fillText("Leader Area", ((s*2)+10+ch), (bh-cw)-(s+15+(bh/2)));
+					c.fillStyle="black";
+					c.fillRect((cw*6+s*4),(bh-ch)-(s+(bh/2)),cw,ch);
+					c.fillRect(s, (bh-s-ch)-((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
+					c.fillRect((cw*6+s*4),(bh-ch)-((s*2)+ch+(bh/2)),cw,ch);
+					c.fillRect(s, (bh-s-ch)-((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+					c.fillStyle="white";
+					c.fillText("Dungeon", (cw*6+s*4+5),(bh-cw)-(s+(bh/2)+12));
+					c.fillText("Support Area", s+12, (bh-cw-s)-((s*1.5)+(bh/2)+ch+12));
+					c.fillText("Vault", (cw*6+s*4+5),(bh-cw)-((s*2)+ch+(bh/2)+12));
+					c.fillText("Council", s+12, (bh-cw-s)-((s*3)+(bh/2)+(ch*2)+12));
+				}
 				
 				function getMousePos(theCanvas, event) {
 					var rect = theCanvas.getBoundingClientRect();
