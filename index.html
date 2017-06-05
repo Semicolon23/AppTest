@@ -4,14 +4,56 @@
 		<style>
 		body {background-color: grey;}
 		</style>
+		<img id="back" width="70" height="100" src="CardBack.png" alt="Card Back">
 	</head>
-	<body style="margin: 0px;">
-		<canvas id="myCanvas" style="z-index:1;" width=650 height=850></canvas>
+	<body style="margin: 0px; overflow: hidden">
+		<canvas id="myCanvas" style="z-index:1;"></canvas>
+		<img id="back" width="70" height="100" src="CardBack.png" alt="Card Back">
 		<script>
 			var theCanvas = document.getElementById("myCanvas"),
 				c = theCanvas.getContext("2d"),
 				cardHeight=100, cardWidth=75, boardWidth=window.innerWidth, boardHeight=window.innerHeight, spacing=25,
 				ch=cardHeight, cw=cardWidth, bw=boardWidth, bh=boardHeight, s=spacing;
+			var deck1=["Card1","Card2"];
+			var reward1=["Card3","Card4"];
+			var deck2=["Card5","Card6"];
+			var reward2=["Card7","Card8"];
+			var currentPhase=2;
+			var startTime = new Date().getTime();
+			var paused=false;
+			var trueTime= setInterval(function(){
+					time++;
+					if(time>59){
+						minutes=minutes+1;
+						time=time-60;
+					}
+					drawElapsedTime();},1000)
+			var time=0;
+			var minutes=0;
+			
+				drawElapsedTime();
+				
+				function pauseTimer(){
+					window.clearInterval(trueTime)
+				}
+				
+				function resumeTimer(){
+					trueTime=setInterval(function(){
+						time++;
+						if(time>59){
+							minutes=minutes+1;
+							time=time-60;
+						}
+						drawElapsedTime();},1000)
+				}
+				
+				function drawElapsedTime(){
+					redraw();
+					c.fillStyle="white";
+					c.font="26px Georgia";
+					c.fillText(minutes+":"+time,s*25+(bw/2), ((s*8)+(ch*3)));
+					c.font="12px Georgia";
+				}
 				
 				(function() {
 			   // Start listening to resize events and draw canvas.
@@ -23,28 +65,24 @@
 				   // Draw canvas border for the first time.
 				   resizeCanvas();
 				}
-
+				
 				// Runs each time the DOM window resize event fires.
 				// Resets the canvas dimensions to match window,
 				// then draws the new borders accordingly.
 				function resizeCanvas() {
 						bw = window.innerWidth;
 						bh = window.innerHeight;
-						ch = bh/8;
-						cw = ch*7/10;
-						s=ch/6;
-						if(bh>900){
-							c.font="14px Georgia";
-						}
-						else if(bh>700){
-							c.font="12px Georgia";
-						}
-						else if(bh>500){
-							c.font="10px Georgia";
-						}
-						else if(bh>400){
-							c.font="8px Georgia";
-						}
+						//if((bh*3)>(bw*2)){
+							cw = bw/16;
+							ch = cw*10/7;
+							s=ch/7;
+						//}
+						//else if((bw*2)>(bh*3)){
+						//	ch = bh/10;
+						//	cw = ch*7/10;
+						//	s=ch/6;
+						//}
+						c.font="12px Georgia";
 						theCanvas.width=bw;
 						theCanvas.height=bh;
 						redraw();
@@ -52,55 +90,110 @@
 				})();
 				
 				function redraw(){
+					//Board
+						//Background
+						c.fillStyle="grey";
+						c.fillRect(0,0,bw*2,bh*2);
+						
+						c.fillStyle="blue";
+						c.fillRect(0,0,bw/2,bh);
+						c.fillStyle="red";
+						c.fillRect((bw/2)+1,0,bw/2,bh);
+						
+						//Player 1
+						c.fillStyle="black";
+						c.fillRect(((s*7)+ch+cw+(ch/2)),s,ch,cw);
+						c.fillStyle="white";
+						c.fillText("Arena", ((s*6)+22+ch+cw+(ch/2)), s+12);
+						c.fillStyle="black";
+						c.fillRect(s,(s),ch,cw);
+						c.fillStyle="white";
+						c.fillText("Reward Deck", s+15, ((s*2)+10));
+						c.fillStyle="black";
+						c.fillRect(((s*2)+ch), (s), ((s*2)+cw+(ch/2)),ch);
+						c.fillStyle="white";
+						c.fillText("Leader Area", ((s*2)+10+ch), (s+15));
+						c.fillStyle="black";
+						c.fillRect((cw*6+s*4),(s),cw,ch);
+						c.fillRect(s, ((s*1.5)+ch), ((cw*4)+(s*4)), (s+ch));
+						c.fillRect((cw*6+s*4),((s*2)+ch),cw,ch);
+						c.fillRect(s, ((s*3)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+						c.fillStyle="white";
+						c.fillText("Dungeon", (cw*6+s*4+5),(s+12));
+						c.fillText("Support Area", s+12, ((s*1.5)+ch+12));
+						c.fillText("Vault", (cw*6+s*4+5),((s*2)+ch+12));
+						c.fillText("Council", s+12, ((s*3)+(ch*2)+12));
+						
+						//Player 2
+						c.fillStyle="black";
+						c.fillRect(((s*7)+ch+cw+(ch/2))+(bw/2),s,ch,cw);
+						c.fillStyle="white";
+						c.fillText("Arena", ((s*6)+22+ch+cw+(ch/2))+(bw/2), s+12);
+						c.fillStyle="black";
+						c.fillRect(s+(bw/2),(s),ch,cw);
+						c.fillStyle="white";
+						c.fillText("Reward Deck", s+15+(bw/2), ((s*2)+10));
+						c.fillStyle="black";
+						c.fillRect(((s*2)+ch)+(bw/2), (s), ((s*2)+cw+(ch/2)),ch);
+						c.fillStyle="white";
+						c.fillText("Leader Area", ((s*2)+10+ch)+(bw/2), (s+15));
+						c.fillStyle="black";
+						c.fillRect((cw*6+s*4)+(bw/2),(s),cw,ch);
+						c.fillRect(s+(bw/2), ((s*1.5)+ch), ((cw*4)+(s*4)), (s+ch));
+						c.fillRect((cw*6+s*4)+(bw/2),((s*2)+ch),cw,ch);
+						c.fillRect(s+(bw/2), ((s*3)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+						c.fillStyle="white";
+						c.fillText("Dungeon", (cw*6+s*4+5)+(bw/2),(s+12));
+						c.fillText("Support Area", s+12+(bw/2), ((s*1.5)+ch+12));
+						c.fillText("Vault", (cw*6+s*4+5)+(bw/2),((s*2)+ch+12));
+						c.fillText("Council", s+12+(bw/2), ((s*3)+(ch*2)+12));
+						
+						//Hand
+						c.fillStyle="black";
+						c.fillRect(s, ((s*5)+(ch*3)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
+						c.fillStyle="white";
+						c.fillText("Hand", s+12, ((s*5)+(ch*3)+12));
+						
+					//Card Backs
+					var cb=document.getElementById("back");
+					if(deck1.length>0){
+						c.drawImage(cb,(cw*6+s*4),((s*2)+ch),cw,ch);
+					}
+					else{
+						c.fillStyle="black";
+						c.fillRect((cw*6+s*4),((s*2)+ch),cw,ch);
+					}
+					if(reward1.length>0){
+						c.drawImage(cb,s,s,ch,cw);
+					}
+					else{
+						c.fillStyle="black";
+						c.fillRect((cw*6+s*4),((s*2)+ch),ch,cw);
+					}
+					
+					if(deck2.length>0){
+						c.drawImage(cb,(cw*6+s*4)+(bw/2),((s*2)+ch),cw,ch);
+					}
+					else{
+						c.fillStyle="black";
+						c.fillRect((cw*6+s*4)+(bw/2),((s*2)+ch),cw,ch);
+					}
+					if(reward2.length>0){
+						c.drawImage(cb,s+(bw/2),s,ch,cw);
+					}
+					else{
+						c.fillStyle="black";
+						c.fillRect((cw*6+s*4)+(bw/2),((s*2)+ch),ch,cw);
+					}
+					
+					//Phase
 					c.fillStyle="grey";
-					c.fillRect(0,0,bw*2,bh*2);
+					c.fillRect(s+(bw/2), ((s*5)+(ch*3)), s*20, (s*4));
+					c.fillStyle="white";
+					c.fillRect(s+(bw/2)+(s*4*(currentPhase-1)), ((s*5)+(ch*3)), s*4, (s*4))
 					
-					c.fillStyle="red";
-					c.fillRect(0,0,bw,(bh/2));
-					c.fillStyle="blue";
-					c.fillRect(0,((bh/2)+1),bw,(bh/2));
+					//Timer
 					
-					c.fillStyle="black";
-					c.fillRect(((s*6)+ch+cw+(ch/2)),(bh/2)-(cw/2),ch,cw);
-					c.fillStyle="white";
-					c.fillText("Arena", ((s*6)+22+ch+cw+(ch/2)), (bh/2));
-					c.fillStyle="black";
-					c.fillRect(s,(s+(bh/2)+1),ch,cw);
-					c.fillStyle="white";
-					c.fillText("Reward Deck", s+15, ((s*2)+10+(bh/2)));
-					c.fillStyle="black";
-					c.fillRect(((s*2)+ch), (s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
-					c.fillStyle="white";
-					c.fillText("Leader Area", ((s*2)+10+ch), (s+15+(bh/2)));
-					c.fillStyle="black";
-					c.fillRect((cw*6+s*4),(s+(bh/2)),cw,ch);
-					c.fillRect(s, ((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
-					c.fillRect((cw*6+s*4),((s*2)+ch+(bh/2)),cw,ch);
-					c.fillRect(s, ((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
-					c.fillStyle="white";
-					c.fillText("Dungeon", (cw*6+s*4+5),(s+(bh/2)+12));
-					c.fillText("Support Area", s+12, ((s*1.5)+(bh/2)+ch+12));
-					c.fillText("Vault", (cw*6+s*4+5),((s*2)+ch+(bh/2)+12));
-					c.fillText("Council", s+12, ((s*3)+(bh/2)+(ch*2)+12));
-					
-					c.fillStyle="black";
-					c.fillRect(s,(bh-cw)-(s+(bh/2)+1),ch,cw);
-					c.fillStyle="white";
-					c.fillText("Reward Deck", s+15, (bh-s)-((s*2)+10+(bh/2)));
-					c.fillStyle="black";
-					c.fillRect(((s*2)+ch), (bh-ch)-(s+(bh/2)+1), ((s*2)+cw+(ch/2)),ch);
-					c.fillStyle="white";
-					c.fillText("Leader Area", ((s*2)+10+ch), (bh-cw)-(s+15+(bh/2)));
-					c.fillStyle="black";
-					c.fillRect((cw*6+s*4),(bh-ch)-(s+(bh/2)),cw,ch);
-					c.fillRect(s, (bh-s-ch)-((s*1.5)+(bh/2)+ch), ((cw*4)+(s*4)), (s+ch));
-					c.fillRect((cw*6+s*4),(bh-ch)-((s*2)+ch+(bh/2)),cw,ch);
-					c.fillRect(s, (bh-s-ch)-((s*3)+(bh/2)+(ch*2)), ((cw*4)+(ch*2)+(s*4)), (s+ch));
-					c.fillStyle="white";
-					c.fillText("Dungeon", (cw*6+s*4+5),(bh-cw)-(s+(bh/2)+12));
-					c.fillText("Support Area", s+12, (bh-cw-s)-((s*1.5)+(bh/2)+ch+12));
-					c.fillText("Vault", (cw*6+s*4+5),(bh-cw)-((s*2)+ch+(bh/2)+12));
-					c.fillText("Council", s+12, (bh-cw-s)-((s*3)+(bh/2)+(ch*2)+12));
 				}
 				
 				function getMousePos(theCanvas, event) {
@@ -115,8 +208,8 @@
 				}
 
 				var rect = {
-					x:250,
-					y:350,
+					x:s*23+(bw/2),
+					y:((s*7)+(ch*3)),
 					width:200,
 					heigth:100
 				};
@@ -126,10 +219,19 @@
 					debugger;
 					if (isInside(mousePos,rect)) {
 						alert('clicked inside rect');
+						if(paused==false){
+							pauseTimer();
+							paused=true;
+						}
 					}else{
 						alert('clicked outside rect');
+						if(paused==true){
+							resumeTimer();
+							paused=false;
+						}
 					}	
 				}, false);
+			   
 		</script>
 	</body>
 </html>
