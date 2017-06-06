@@ -25,7 +25,6 @@
 		<canvas id="myCanvas" style="position: absolute; left:0px; top:0px; z-index:1;"></canvas>
 		<img id="back" width="70" height="100" src="CardBack.png" style="position: absolute; left:0px; top:0px; z-index:0;" alt="Card Back">
 		<img id="reward1" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="Card Back" >
-		<img id="reward2" width="35" height="50" class="rotate90" src="CardBack.png" style="position: absolute; left:7px; top:-7px; z-index:3;" alt="Card Back" >
 		<script>
 			var theCanvas = document.getElementById("myCanvas"),
 				c = theCanvas.getContext("2d"),
@@ -38,12 +37,20 @@
 			var time=0;
 			var minutes=0;
 			var pictures = document.getElementsByTagName("IMG");
+			
 			var testImage = document.getElementById("reward1");
 			
+			//////////////////////////////////////////////////////////////////////////////////
+			//MAKE THESE WORK AND WE GUCCI MANE
+			//
+			//
 			testImage.style.left=200;
 			testImage.height=200;
 			testImage.class="rotate0";
-			
+			//
+			//You'll know it works if the "image" in the top left is upright and more right
+			//
+			/////////////////////////////////////////////////////////////////////////////////
 				drawElapsedTime();
 				
 				function pauseTimer(){
