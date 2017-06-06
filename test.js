@@ -3,10 +3,10 @@ const app = express();
 const fs = require('fs');
 const EventEmitter = require('events');
 
-class MyEmitter extends EventEmitter{}
+class emitter extends EventEmitter{}
 
-const myEmitter = new MyEmitter();
-myEmitter.on('event', () => {
+const testEmitter = new emitter();
+testEmitter.on('event', () => {
 	console.log('event happened@');
 });
 
@@ -29,5 +29,3 @@ fs.readFile('index.html', (err, html) => {
 app.listen(app.get('port'), function(){
 	console.log('Server running on port ', app.get('port'));
 })
-
-
