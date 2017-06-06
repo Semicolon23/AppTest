@@ -1,6 +1,14 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var events = require('events');
+
+var EventEmitter = require('events').EventEmitter;
+var test = new EventEmitter();
+
+test.on("TESTEVENT", function(){
+	console.log("We done it boys");
+});
 
 app.set('port', (process.env.PORT || 5000));
 

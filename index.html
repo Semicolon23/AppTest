@@ -225,6 +225,7 @@
 						}
 					}else{
 						alert('clicked outside rect');
+						test.emit("TESTEVENT");
 						if(paused==true){
 							resumeTimer();
 							paused=false;
