@@ -10,7 +10,9 @@ app.use(express.static(__dirname + '/public'));
 fs.readFile('index.html', (err, html) => {
 	app.get('/', function(req, res){
 		res.setHeader('Content-type', 'text/html');
-		res.write(html);
+		res.render('html', {
+			title: 'TEST'
+		});
 		res.end();
 	});
 });
