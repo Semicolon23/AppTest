@@ -4,9 +4,9 @@ var fs = require('fs');
 var events = require('events');
 
 var EventEmitter = require('events').EventEmitter;
-var test = new EventEmitter();
+var ee = new EventEmitter();
 
-test.on("TESTEVENT", function(){
+ee.on("test", function(){
 	console.log("We done it boys");
 });
 
@@ -23,8 +23,7 @@ fs.readFile('index.html', (err, html) => {
 	});
 });
 
-
-
+ee.emit("test");
 
 app.listen(app.get('port'), function(){
 	console.log('Server running on port ', app.get('port'));
