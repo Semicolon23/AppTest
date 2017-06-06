@@ -10,18 +10,12 @@ app.use(express.static(__dirname + '/public'));
 fs.readFile('index.html', (err, html) => {
 	app.get('/', function(req, res){
 		res.setHeader('Content-type', 'text/html');
-		res.render('html', {
-			title: 'TEST'
-		});
+		res.write(html);
 		res.end();
 	});
 });
 
-app.post('/', function(req, res){
 
-
-
-});
 
 
 app.listen(app.get('port'), function(){
