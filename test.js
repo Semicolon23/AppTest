@@ -1,13 +1,13 @@
-var express = require('express');
-var app = express();
-var fs = require('fs');
-var events = require('events');
+const express = require('express');
+const app = express();
+const fs = require('fs');
+const EventEmitter = require('events');
 
-var EventEmitter = require('events').EventEmitter;
-var ee = new EventEmitter();
+class MyEmitter extends EventEmitter{}
 
-ee.on("test", function(){
-	res.write('meh');
+const myEmitter = new MyEmitter();
+myEmitter.on('event', () => {
+	console.log('event happened@');
 });
 
 app.set('port', (process.env.PORT || 5000));
@@ -19,7 +19,7 @@ fs.readFile('index.html', (err, html) => {
 	app.get('/', function(req, res){
 		res.setHeader('Content-type', 'text/html');
 		res.write(html);
-		ee.emit("test");
+		myEmitter.emit('event');
 		res.end();
 	});
 });

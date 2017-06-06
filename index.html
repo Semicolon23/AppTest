@@ -217,7 +217,6 @@
 				theCanvas.addEventListener('click', function(evt) {
 					var mousePos = getMousePos(theCanvas, evt);
 					debugger;
-					ee.emit("test");
 					if (isInside(mousePos,rect)) {
 						alert('clicked inside rect');
 						if(paused==false){
