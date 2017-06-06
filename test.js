@@ -7,7 +7,7 @@ var EventEmitter = require('events').EventEmitter;
 var ee = new EventEmitter();
 
 ee.on("test", function(){
-	console.log("We done it boys");
+	res.write("meh");
 });
 
 app.set('port', (process.env.PORT || 5000));
