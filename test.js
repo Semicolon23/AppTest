@@ -19,11 +19,12 @@ fs.readFile('index.html', (err, html) => {
 	app.get('/', function(req, res){
 		res.setHeader('Content-type', 'text/html');
 		res.write(html);
+		ee.emit("test");
 		res.end();
 	});
 });
 
-ee.emit("test");
+
 
 app.listen(app.get('port'), function(){
 	console.log('Server running on port ', app.get('port'));
