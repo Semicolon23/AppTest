@@ -3,6 +3,83 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<style>
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 7; /* Sit on top */
+			padding-top: 100px; /* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+		}
+
+		/* Modal Content (image) */
+		.modal-content {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 700px;
+		}
+
+		/* Caption of Modal Image */
+		#caption {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 700px;
+			text-align: center;
+			color: #ccc;
+			padding: 10px 0;
+			height: 150px;
+		}
+
+		/* Add Animation */
+		.modal-content, #caption {    
+			-webkit-animation-name: zoom;
+			-webkit-animation-duration: 0.6s;
+			animation-name: zoom;
+			animation-duration: 0.6s;
+		}
+
+		@-webkit-keyframes zoom {
+			from {-webkit-transform:scale(0)} 
+			to {-webkit-transform:scale(1)}
+		}
+
+		@keyframes zoom {
+			from {transform:scale(0)} 
+			to {transform:scale(1)}
+		}
+
+		/* The Close Button */
+		.close {
+			position: absolute;
+			top: 15px;
+			right: 35px;
+			color: #f1f1f1;
+			font-size: 40px;
+			font-weight: bold;
+			transition: 0.3s;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		/* 100% Image Width on Smaller Screens */
+		@media only screen and (max-width: 700px){
+			.modal-content {
+				width: 100%;
+			}
+		}
+		
 		.rotate90 {
 			-webkit-transform: rotate(90deg);
 			-moz-transform: rotate(90deg);
@@ -22,60 +99,115 @@
 		<img id="back" width="70" height="100" src="CardBack.png" alt="Card Back">
 	</head>
 	<body style="margin: 0px; overflow: hidden">
-		<canvas id="myCanvas" style="position: absolute; left:0px; top:0px; z-index:1;"></canvas>
-		<img id="back" width="70" height="100" src="CardBack.png" style="position: absolute; left:0px; top:0px; z-index:0;" alt="Card Back">
-		<img id="reward1" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="Card Back" >
+		<canvas id="myCanvas" width="800" height="930" style="position: absolute; left:0px; top:0px; z-index:1;"></canvas>
+		<img id="reward1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="reward" >
+		<img id="leader1" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:6;" alt="leader" >
+		<img id="leader1s1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="skill" >
+		<img id="leader1s2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="leader1s3" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="arena1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="arena" >
+		<img id="dungeon1" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="dungeon" >
+		<img id="vault1" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="vault" >
+		<img id="support1a" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="support1b" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="support1c" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="support1d" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="council1a" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council1as1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council1as2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="council1b" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council1bs1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council1bs2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="council1c" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council1cs1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council1cs2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="council1d" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council1ds1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council1ds2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		
+		<img id="reward2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="reward" >
+		<img id="leader2" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:6;" alt="leader" >
+		<img id="leader2s1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="skill" >
+		<img id="leader2s2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="leader2s3" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="arena2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="arena" >
+		<img id="dungeon2" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="dungeon" >
+		<img id="vault2" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="vault" >
+		<img id="support2a" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="support2b" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="support2c" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="support2d" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="support" >
+		<img id="council2a" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council2as1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council2as2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="council2b" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council2bs1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council2bs2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="council2c" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council2cs1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council2cs2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		<img id="council2d" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
+		<img id="council2ds1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
+		<img id="council2ds2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
+		
+		<img id="hand1" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand2" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand3" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand4" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand5" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand6" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand7" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		<img id="hand8" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
+		
+		<div id="myModal" class="modal">
+		  <span class="close">&times;</span>
+		  <img class="modal-content" id="img01">
+		  <div id="caption"></div>
+		</div>
+		
 		<script>
+			var modal = document.getElementById('myModal');
 			var theCanvas = document.getElementById("myCanvas"),
 				c = theCanvas.getContext("2d"),
 				cardHeight=100, cardWidth=75, boardWidth=window.innerWidth, boardHeight=window.innerHeight, spacing=25,
 				ch=cardHeight, cw=cardWidth, bw=boardWidth, bh=boardHeight, s=spacing;
-			var currentPhase=2;
-			var startTime = new Date().getTime();
-			var paused=true;
+			var currentPhase=1;
+			var paused=1;
 			var trueTime;
 			var time=0;
 			var minutes=0;
-			var pictures = document.getElementsByTagName("IMG");
+			var d = (ch-cw)/2;
 			
-			var testImage = document.getElementById("reward1");
+			var pictures = [document.getElementById("reward1"),document.getElementById("leader1"),
+					document.getElementById("leader1s1"),document.getElementById("leader1s2"),
+					document.getElementById("leader1s3"),document.getElementById("arena1"),
+					document.getElementById("dungeon1"),document.getElementById("vault1"),
+					document.getElementById("support1a"),document.getElementById("support1b"),
+					document.getElementById("support1c"),document.getElementById("support1d"),
+					document.getElementById("council1a"),document.getElementById("council1as1"),
+					document.getElementById("council1as2"),document.getElementById("council1b"),
+					document.getElementById("council1bs1"),document.getElementById("council1bs2"),
+					document.getElementById("council1c"),document.getElementById("council1cs1"),
+					document.getElementById("council1cs2"), document.getElementById("council1d"),
+					document.getElementById("council1ds1"), document.getElementById("council1ds2"),
+					document.getElementById("reward2"),document.getElementById("leader2"),
+					document.getElementById("leader2s1"),document.getElementById("leader2s2"),
+					document.getElementById("leader2s3"),document.getElementById("arena2"),
+					document.getElementById("dungeon2"),document.getElementById("vault2"),
+					document.getElementById("support2a"),document.getElementById("support2b"),
+					document.getElementById("support2c"),document.getElementById("support2d"),
+					document.getElementById("council2a"),document.getElementById("council2as1"),
+					document.getElementById("council2as2"),document.getElementById("council2b"),
+					document.getElementById("council2bs1"),document.getElementById("council2bs2"),
+					document.getElementById("council2c"),document.getElementById("council2cs1"),
+					document.getElementById("council2cs2"), document.getElementById("council2d"),
+					document.getElementById("council2ds1"), document.getElementById("council2ds2"),
+					document.getElementById("hand1"), document.getElementById("hand2"),
+					document.getElementById("hand3"), document.getElementById("hand4"),
+					document.getElementById("hand5"), document.getElementById("hand6"),
+					document.getElementById("hand7"), document.getElementById("hand8")];
 			
-			//////////////////////////////////////////////////////////////////////////////////
-			//MAKE THESE WORK AND WE GUCCI MANE
-			//
-			//
-			testImage.style.left=200;
-			testImage.height=200;
-			testImage.class="rotate0";
-			//
-			//You'll know it works if the "image" in the top left is upright and more right
-			//
-			/////////////////////////////////////////////////////////////////////////////////
-				drawElapsedTime();
-				
-				function pauseTimer(){
-					window.clearInterval(trueTime)
-				}
-				
-				function resumeTimer(){
-					trueTime=setInterval(function(){
-						time++;
-						if(time>59){
-							minutes=minutes+1;
-							time=time-60;
-						}
-						drawElapsedTime();},1000)
-				}
-				
-				function drawElapsedTime(){
-					redraw();
-					c.fillStyle="white";
-					c.font="26px Georgia";
-					c.fillText(minutes+":"+time,s*25+(bw/2), ((s*8)+(ch*3)));
-					c.font="12px Georgia";
-				}
-				
-				(function() {
+			(function() {
 			   // Start listening to resize events and draw canvas.
 			   initialize();
 				function initialize() {
@@ -86,7 +218,6 @@
 				   resizeCanvas();
 				   drawElapsedTime();
 				}
-				
 				
 				// Runs each time the DOM window resize event fires.
 				// Resets the canvas dimensions to match window,
@@ -107,8 +238,7 @@
 						c.font="12px Georgia";
 						theCanvas.width=bw;
 						theCanvas.height=bh;
-						//pictures.forEach(resizePictures);
-						placePictures();
+						d = (ch-cw)/2;
 						redraw();
 					}
 				})();
@@ -118,8 +248,241 @@
 					item.height=ch;
 				}
 				
-				function placePictures(){
+				function clearPictures(item){
+					//item.src="http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png";
+					item.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
+				}
 				
+				function drawPictures(){
+				}
+				
+				function placePictures(){
+					//Player 1 Area
+					var placer = document.getElementById("reward1"); 
+					placer.style.left=s+d+"px";
+					placer.style.top=s-d+"px";
+					
+					placer = document.getElementById("leader1");
+					placer.style.left=((s*2.5)+ch)+"px";
+					placer.style.top=s+"px";
+					
+					placer = document.getElementById("leader1s1");
+					placer.style.left=((s*2.5)+ch)+cw/2+d+"px";
+					placer.style.top=s-d+"px";
+					
+					placer = document.getElementById("leader1s2");
+					placer.style.left=((s*2.5)+ch)+cw/2+d+"px";
+					placer.style.top=s+(cw*1/5)-d+"px";
+					
+					placer = document.getElementById("leader1s3");
+					placer.style.left=((s*2.5)+ch)+cw/2+d+"px";
+					placer.style.top=s+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("arena1");
+					placer.style.left=((s*7)+ch+cw+(ch/2))+d+"px";
+					placer.style.top=(s-d)+"px";
+					
+					placer = document.getElementById("dungeon1"); 
+					placer.style.left=(cw*6+s*4)+"px";
+					placer.style.top=s+"px";
+					
+					placer = document.getElementById("vault1");
+					placer.style.left=(cw*6+s*4)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support1a"); 
+					placer.style.left=(s*1.5)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support1b");
+					placer.style.left=(s*2.5)+(cw)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support1c");
+					placer.style.left=(s*3.5)+(cw*2)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support1d");
+					placer.style.left=(s*4.5)+(cw*3)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("council1a");
+					placer.style.left=(s*1.5)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council1as1"); 
+					placer.style.left=(s*1.5)+(cw-ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council1as2"); 
+					placer.style.left=(s*1.5)+(cw-ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("council1b"); 
+					placer.style.left=(s*2.5)+(cw*1+ch*.5)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council1bs1"); 
+					placer.style.left=(s*2.5)+(cw*2)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council1bs2"); 
+					placer.style.left=(s*2.5)+(cw*2)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("council1c"); 
+					placer.style.left=(s*3.5)+(cw*2+ch)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council1cs1"); 
+					placer.style.left=(s*3.5)+(cw*3+ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council1cs2"); 
+					placer.style.left=(s*3.5)+(cw*3+ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("council1d"); 
+					placer.style.left=(s*4.5)+(cw*3+ch*1.5)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council1ds1"); 
+					placer.style.left=(s*4.5)+(cw*4+ch)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council1ds2");
+					placer.style.left=(s*4.5)+(cw*4+ch)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					//Player 2 area
+					placer = document.getElementById("reward2"); 
+					placer.style.left=(bw/2)+s+d+"px";
+					placer.style.top=s-d+"px";
+					
+					placer = document.getElementById("leader2");
+					placer.style.left=(bw/2)+((s*2.5)+ch)+"px";
+					placer.style.top=s+"px";
+					
+					placer = document.getElementById("leader2s1");
+					placer.style.left=(bw/2)+((s*2.5)+ch)+cw/2+d+"px";
+					placer.style.top=s-d+"px";
+					
+					placer = document.getElementById("leader2s2");
+					placer.style.left=(bw/2)+((s*2.5)+ch)+cw/2+d+"px";
+					placer.style.top=s+(cw*1/5)-d+"px";
+					
+					placer = document.getElementById("leader2s3");
+					placer.style.left=(bw/2)+((s*2.5)+ch)+cw/2+d+"px";
+					placer.style.top=s+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("arena2");
+					placer.style.left=(bw/2)+((s*7)+ch+cw+(ch/2))+d+"px";
+					placer.style.top=(s-d)+"px";
+					
+					placer = document.getElementById("dungeon2"); 
+					placer.style.left=(bw/2)+(cw*6+s*4)+"px";
+					placer.style.top=s+"px";
+					
+					placer = document.getElementById("vault2");
+					placer.style.left=(bw/2)+(cw*6+s*4)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support2a"); 
+					placer.style.left=(bw/2)+(s*1.5)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support2b");
+					placer.style.left=(bw/2)+(s*2.5)+(cw)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support2c");
+					placer.style.left=(bw/2)+(s*3.5)+(cw*2)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("support2d");
+					placer.style.left=(bw/2)+(s*4.5)+(cw*3)+"px";
+					placer.style.top=((s*2)+ch)+"px";
+					
+					placer = document.getElementById("council2a");
+					placer.style.left=(bw/2)+(s*1.5)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council2as1"); 
+					placer.style.left=(bw/2)+(s*1.5)+(cw-ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council2as2"); 
+					placer.style.left=(bw/2)+(s*1.5)+(cw-ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("council2b"); 
+					placer.style.left=(bw/2)+(s*2.5)+(cw*1+ch*.5)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council2bs1"); 
+					placer.style.left=(bw/2)+(s*2.5)+(cw*2)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council2bs2"); 
+					placer.style.left=(bw/2)+(s*2.5)+(cw*2)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("council2c"); 
+					placer.style.left=(bw/2)+(s*3.5)+(cw*2+ch)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council2cs1"); 
+					placer.style.left=(bw/2)+(s*3.5)+(cw*3+ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council2cs2"); 
+					placer.style.left=(bw/2)+(s*3.5)+(cw*3+ch*.5)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					placer = document.getElementById("council2d"); 
+					placer.style.left=(bw/2)+(s*4.5)+(cw*3+ch*1.5)+"px";
+					placer.style.top=((s*3.5)+(ch*2))+"px";
+					
+					placer = document.getElementById("council2ds1"); 
+					placer.style.left=(bw/2)+(s*4.5)+(cw*4+ch)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))-d+"px";
+					
+					placer = document.getElementById("council2ds2");
+					placer.style.left=(bw/2)+(s*4.5)+(cw*4+ch)+d+"px";
+					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
+					
+					//Hand
+					placer = document.getElementById("hand1");
+					placer.style.left=0+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand2");
+					placer.style.left=cw+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand3");
+					placer.style.left=(cw*2)+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand4");
+					placer.style.left=(cw*3)+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand5");
+					placer.style.left=(cw*4)+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand6");
+					placer.style.left=(cw*5)+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand7");
+					placer.style.left=(cw*6)+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
+					
+					placer = document.getElementById("hand8");
+					placer.style.left=(cw*7)+"px";
+					placer.style.top=((s*5.5)+(ch*3))+"px";
 				}
 				
 				function redraw(){
@@ -196,6 +559,11 @@
 					//Timer
 					c.fillStyle="black";
 					c.fillRect(s*18+(bw/2), ((s*5)+(ch*3)), s*20, (s*4));
+					
+					pictures.forEach(clearPictures);
+					drawPictures();
+					pictures.forEach(resizePictures);
+					placePictures();
 				}
 				
 				function getMousePos(theCanvas, event) {
@@ -206,34 +574,119 @@
 					};
 				}
 				function isInside(pos, rect){
-					return pos.x > rect.x && pos.x < rect.x+rect.width && pos.y < rect.y+rect.heigth && pos.y > rect.y
+					return pos.x > rect.x && pos.x < rect.x+rect.width && pos.y < rect.y+rect.height && pos.y > rect.y
 				}
-
-				var rect = {
+				
+				var rect = [{
 					x:s*18+(bw/2),
 					y:((s*5)+(ch*3)),
 					width:s*20,
-					heigth:(s*4)
-				};
+					height:(s*4)
+				},
+					{
+					x:s*18+(bw/2),
+					y:((s*9)+(ch*3)),
+					width:s*4,
+					height:(s*4)
+				},
+					{
+					x:s*18+(bw/2)+(s*4),
+					y:((s*9)+(ch*3)),
+					width:s*4,
+					height:(s*4)
+				},
+					{
+					x:s*18+(bw/2)+(s*4*2),
+					y:((s*9)+(ch*3)),
+					width:s*4,
+					height:(s*4)
+				},
+					{
+					x:s*18+(bw/2)+(s*4*3),
+					y:((s*9)+(ch*3)),
+					width:s*4,
+					height:(s*4)
+				},
+					{
+					x:s*18+(bw/2)+(s*4*4),
+					y:((s*9)+(ch*3)),
+					width:s*4,
+					height:(s*4)
+				}];
 				
 				theCanvas.addEventListener('click', function(evt) {
 					var mousePos = getMousePos(theCanvas, evt);
 					
-					debugger;
-					if (isInside(mousePos,rect)) {
-						alert('clicked inside rect');
-						if(paused==false){
+					if (isInside(mousePos,rect[0])) {
+						if(paused<1){
+							alert('Pausing Timer');
 							pauseTimer();
-							paused=true;
+							paused=1;
 						}
 						else{
+							alert('Resuming Timer');
 							resumeTimer();
-							paused=false;
+							paused=0;
 						}
-					}else{
+					}
+					else if(isInside(mousePos,rect[1])){
+						alert('Changing to Judgement Phase');
+						currentPhase=1;
 					}	
-				}, false);
+					else if(isInside(mousePos,rect[2])){
+						alert('Changing to Draw Phase');
+						currentPhase=2;
+					}	
+					else if(isInside(mousePos,rect[3])){
+						alert('Changing to Tactics Phase');
+						currentPhase=3;
+					}	
+					else if(isInside(mousePos,rect[4])){
+						alert('Changing to Brawl Phase');
+						currentPhase=4;
+					}	
+					else if(isInside(mousePos,rect[5])){
+						alert('Changing to End Phase');
+						currentPhase=5;
+					}	
+				});
+				
+				function pauseTimer(){
+					window.clearInterval(trueTime)
+				}
+				
+				function resumeTimer(){
+					trueTime=setInterval(function(){
+						time++;
+						if(time>59){
+							minutes=minutes+1;
+							time=time-60;
+						}
+						redraw();
+						drawElapsedTime();},1000)
+				}
+				
+				function drawElapsedTime(){
+					c.fillStyle="white";
+					c.font="26px Georgia";
+					c.fillText(minutes+":"+time,s*25+(bw/2), ((s*8)+(ch*3)));
+					c.font="12px Georgia";
+				}
 			   
+				var modalImg = document.getElementById("img01");
+				function zoomIn(x){
+					modal.style.display = "block";
+					modalImg.src = x.src;
+					captionText.innerHTML = x.alt;
+				}
+
+				// Get the <span> element that closes the modal
+				var span = document.getElementsByClassName("close")[0];
+
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() { 
+					modal.style.display = "none";
+				}
 		</script>
 	</body>
 </html>
