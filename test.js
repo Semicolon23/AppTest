@@ -4,15 +4,13 @@ const app = express();
 const fs = require('fs');
 //const io = require('socket.io').listen(server);
 
-users = [];
-connections [];
 
 
 
 
-//app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000));
 
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 
 fs.readFile('index.html', (err, html) => {
