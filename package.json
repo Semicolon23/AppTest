@@ -9,8 +9,7 @@
   "dependencies":{
   	"express":"*",
   	"body-parser":"*",
-    "socket.io":"*", 
-    "events":"*"
+    "socket.io":"*"
   },
   "author": "Arena Games LLC: Colin Munroe, Alexander Tieman, Liam Clift, Corbin Baker, Matt Clayton",
   "license": "ISC"

@@ -1,30 +1,41 @@
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app)
 const fs = require('fs');
-const EventEmitter = require('events');
+const io = require('socket.io').listen(server);
 
-class emitter extends EventEmitter{}
+users = [];
+connections [];
 
-const testEmitter = new emitter();
-testEmitter.on('event', () => {
-	console.log('event happened@');
-});
 
-app.set('port', (process.env.PORT || 5000));
 
-app.use(express.static(__dirname + '/public'));
+
+//app.set('port', (process.env.PORT || 5000));
+
+//app.use(express.static(__dirname + '/public'));
 
 
 fs.readFile('index.html', (err, html) => {
 	app.get('/', function(req, res){
 		res.setHeader('Content-type', 'text/html');
-		res.write(html);
+		res.write(example);
 		
 		res.end();
 	});
 });
 
+io.sockets.on('connection', function(socket) {
+	connections.push(socket);
 
+	socket.on('disconnect', function(data){
+		connections.splice(connections.indexOf(socket), 1);
+	});
+
+	socket.on('send message', function(data){
+		io.sockets.emit('new message', {msg: data});
+	});
+	
+});
 
 app.listen(app.get('port'), function(){
 	console.log('Server running on port ', app.get('port'));
