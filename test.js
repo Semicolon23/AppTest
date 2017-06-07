@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-const server = require('http').createServer(app)
+//const server = require('http').createServer(app)
 const fs = require('fs');
-const io = require('socket.io').listen(server);
+//const io = require('socket.io').listen(server);
 
 users = [];
 connections [];
