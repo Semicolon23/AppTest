@@ -18,7 +18,7 @@ connections [];
 fs.readFile('index.html', (err, html) => {
 	app.get('/', function(req, res){
 		res.setHeader('Content-type', 'text/html');
-		res.write(example);
+		res.write(html);
 		
 		res.end();
 	});
