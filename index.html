@@ -618,6 +618,7 @@
 					var mousePos = getMousePos(theCanvas, evt);
 					
 					if (isInside(mousePos,rect[0])) {
+						testEmitter.emit('event');
 						if(paused<1){
 							alert('Pausing Timer');
 							pauseTimer();
