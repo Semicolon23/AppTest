@@ -98,7 +98,7 @@
 		</style>
 		<img id="back" width="70" height="100" src="CardBack.png" alt="Card Back">
 	</head>
-	<body style="margin: 0px; overflow: hidden">
+	<body id="body" style="margin: 0px; overflow: hidden">
 		<canvas id="myCanvas" width="800" height="930" style="position: absolute; left:0px; top:0px; z-index:1;"></canvas>
 		<img id="reward1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="reward" >
 		<img id="leader1" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:6;" alt="leader" >
@@ -150,15 +150,6 @@
 		<img id="council2ds1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
 		<img id="council2ds2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
 		
-		<img id="hand1" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand2" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand3" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand4" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand5" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand6" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand7" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		<img id="hand8" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="hand" >
-		
 		<div id="myModal" class="modal">
 		  <span class="close">&times;</span>
 		  <img class="modal-content" id="img01">
@@ -177,6 +168,8 @@
 			var time=0;
 			var minutes=0;
 			var d = (ch-cw)/2;
+			var hand=["Card1", "Card2", "Card3", "Card4"];
+			var imgHand=[];
 			
 			var pictures = [document.getElementById("reward1"),document.getElementById("leader1"),
 					document.getElementById("leader1s1"),document.getElementById("leader1s2"),
@@ -201,11 +194,7 @@
 					document.getElementById("council2bs1"),document.getElementById("council2bs2"),
 					document.getElementById("council2c"),document.getElementById("council2cs1"),
 					document.getElementById("council2cs2"), document.getElementById("council2d"),
-					document.getElementById("council2ds1"), document.getElementById("council2ds2"),
-					document.getElementById("hand1"), document.getElementById("hand2"),
-					document.getElementById("hand3"), document.getElementById("hand4"),
-					document.getElementById("hand5"), document.getElementById("hand6"),
-					document.getElementById("hand7"), document.getElementById("hand8")];
+					document.getElementById("council2ds1"), document.getElementById("council2ds2")];
 			
 			(function() {
 			   // Start listening to resize events and draw canvas.
@@ -254,6 +243,52 @@
 				}
 				
 				function drawPictures(){
+					for(i=0;i<imgHand.length;i++){
+						imgHand[i].parentNode.removeChild(imgHand[i]);
+					}
+					imgHand=[];
+					drawHand();
+				}
+				
+				function drawHand(){
+					for(var i=0;i<hand.length;i++){
+						var img = document.createElement("img");
+						img.id="hand"+i+"";
+						img.onclick="zoomIn(this)"; 
+						img.width=cw; 
+						img.height=ch;
+						img.class="rotate0"; 
+						img.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
+						img.style="position: absolute; left:15px; top:-15px; z-index:3;"; 
+						img.alt="hand";
+						imgHand.push(img);
+						var source=document.getElementById("body");
+						source.appendChild(img);
+					}
+				}
+				
+				function placeHand(){
+					if(imgHand.length>8){
+						for(i=0;i<imgHand.length;i++){
+							imgHand[i].style.top=((s*5.5)+(ch*3))+"px";
+							imgHand[i].style.left=(i*cw*8/imgHand.length)+"px";
+						}
+					}
+					else if(imgHand.length<8){
+						var leftMost = cw*4-cw*imgHand.length/2;
+						var current = leftMost;
+						for(i=0;i<imgHand.length;i++){
+							imgHand[i].style.top=((s*5.5)+(ch*3))+"px";
+							imgHand[i].style.left=current+"px";
+							current=leftMost+cw;
+						}
+					}
+					else{
+						for(i=0;i<imgHand.length;i++){
+							imgHand[i].style.top=((s*5.5)+(ch*3))+"px";
+							imgHand[i].style.left=(i*cw)+"px";
+						}
+					}
 				}
 				
 				function placePictures(){
@@ -452,37 +487,7 @@
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
 					
 					//Hand
-					placer = document.getElementById("hand1");
-					placer.style.left=0+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand2");
-					placer.style.left=cw+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand3");
-					placer.style.left=(cw*2)+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand4");
-					placer.style.left=(cw*3)+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand5");
-					placer.style.left=(cw*4)+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand6");
-					placer.style.left=(cw*5)+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand7");
-					placer.style.left=(cw*6)+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
-					
-					placer = document.getElementById("hand8");
-					placer.style.left=(cw*7)+"px";
-					placer.style.top=((s*5.5)+(ch*3))+"px";
+					placeHand();
 				}
 				
 				function redraw(){
