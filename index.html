@@ -168,7 +168,7 @@
 			var time=0;
 			var minutes=0;
 			var d = (ch-cw)/2;
-			var hand=["Card1", "Card2", "Card3", "Card4"];
+			var hand=["Card1", "Card2", "Card3", "Card4", "Card5","Card6","Card7","Card8","Card9","Card10" ];
 			var imgHand=[];
 			
 			var pictures = [document.getElementById("reward1"),document.getElementById("leader1"),
@@ -271,7 +271,7 @@
 					if(imgHand.length>8){
 						for(i=0;i<imgHand.length;i++){
 							imgHand[i].style.top=((s*5.5)+(ch*3))+"px";
-							imgHand[i].style.left=(i*cw*8/imgHand.length)+"px";
+							imgHand[i].style.left=(i*(cw*8)/imgHand.length)+"px";
 						}
 					}
 					else if(imgHand.length<8){
@@ -280,7 +280,7 @@
 						for(i=0;i<imgHand.length;i++){
 							imgHand[i].style.top=((s*5.5)+(ch*3))+"px";
 							imgHand[i].style.left=current+"px";
-							current=leftMost+cw;
+							current=current+cw;
 						}
 					}
 					else{
