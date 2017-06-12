@@ -297,7 +297,6 @@
 				var choice;
 				var body= document.getElementById("body");
 				for(i=0;i<heroes.length;i++){
-					alert(i);
 					choice = document.createElement("img");
 					choice.id="hero"+i+"";
 					choice.width=cw*2; 
@@ -777,13 +776,11 @@
 						if(paused<1){
 							alert('Pausing Timer');
 							pauseTimer();
-							testCap();
 							paused=1;
 						}
 						else{
 							alert('Resuming Timer');
 							resumeTimer();
-							testCap();
 							paused=0;
 						}
 					}
