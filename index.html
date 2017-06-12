@@ -183,10 +183,15 @@
 			var hand=[];
 			var imgHand=[];
 			var heroes=["Bill","Bob","Beau","Brad","Bart"];
+			var imgHeroes=[];
 			var leader;
 			var council=[];
 			var setUp = 0;
-			var decks=["Apple", "Banana"];
+			var decks=[];
+			var arena;
+			var support=[];
+			var councilSkills=[];
+			
 			
 			//Keep track of all the images
 			var pictures = [document.getElementById("reward1"),document.getElementById("leader1"),
@@ -303,10 +308,11 @@
 					choice.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
 					choice.style="position: absolute; left:15px; top:-15px; z-index:3;"; 
 					choice.style.top=s+"px";
-					choice.style.left=i*cw*2*s*2+s+"px";
+					choice.style.left=cw*2.5*i+"px";
 					choice.alt=heroes[i];
-					choice.setAttribute("onclick","leaderChoice(this)"); 
-					body.appendChild(choice)
+					choice.setAttribute("onclick","leaderChoice(this)");
+					imgHeroes.push(choice);
+					body.appendChild(choice);
 				}
 				//Get the list of heroes and place those five pictures 
 				//Make that the leader and put the rest in the council
@@ -321,10 +327,9 @@
 						council.push(heroes[i]);
 					}
 				}
-				for(i=0;i<heroes.length;i++){
-					var removal=document.getElementById("hero"+i+"");
-					removal.parentNode.removeChild(removal);
-				}
+				for(i=0;i<imgHeroes.length;i++){
+						imgHeroes[i].parentNode.removeChild(imgHeroes[i]);
+					}
 				setUp=2;
 				resizeCanvas();
 			}
