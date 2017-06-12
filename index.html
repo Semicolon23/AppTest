@@ -2,6 +2,17 @@
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="socket.io/socket.io.js"></script>
+		<script>
+		//Colin's Section
+		var socket = io().connect('http://localhost:5000');
+		
+
+
+
+
+
+		</script>
 		<style>
 		.modal {
 			display: none; /* Hidden by default */
@@ -174,7 +185,7 @@
 			var heroes=["Bill","Bob","Beau","Brad","Bart"];
 			var leader;
 			var council=[];
-			var setUp = 2;
+			var setUp = 0;
 			var decks=["Apple", "Banana"];
 			
 			//Keep track of all the images
