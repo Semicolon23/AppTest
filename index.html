@@ -167,10 +167,17 @@
 			var trueTime;
 			var time=0;
 			var minutes=0;
+			//Card displacement for rotated cards
 			var d = (ch-cw)/2;
-			var hand=["Card1", "Card2", "Card3", "Card4", "Card5","Card6","Card7","Card8","Card9","Card10" ];
+			var hand=[];
 			var imgHand=[];
+			var heroes=["Bill","Bob","Beau","Brad","Bart"];
+			var leader;
+			var council=[];
+			var setUp = 0;
+			var decks=["Apple", "Banana"];
 			
+			//Keep track of all the images
 			var pictures = [document.getElementById("reward1"),document.getElementById("leader1"),
 					document.getElementById("leader1s1"),document.getElementById("leader1s2"),
 					document.getElementById("leader1s3"),document.getElementById("arena1"),
@@ -196,10 +203,128 @@
 					document.getElementById("council2cs2"), document.getElementById("council2d"),
 					document.getElementById("council2ds1"), document.getElementById("council2ds2")];
 			
+			function deckSelect(){
+				var body = document.getElementById("body");
+				//Create a text area for them to put in a deck
+				var builder = document.createElement("textarea");
+				builder.id="deckMaker";
+				builder.rows="63";
+				builder.cols="45";
+				builder.style="position: absolute; left:0px; top:0px; z-index:8;";
+				
+				//A button to show when done
+				var submit = document.createElement("button");
+				submit.id="submit";
+				submit.innerHTML="Submit";
+				submit.setAttribute("onclick","finalizeDeck()"); 
+				submit.style="position: absolute; left:400px; top:50px; z-index:8;";
+				
+				//A drop down to select premade decks
+				var dropDown = document.createElement("select");
+				dropDown.id="dropDown";
+				dropDown.style="position: absolute; left:400px; top:10px; z-index:8;";
+				body.appendChild(dropDown);
+				for(i=0;i<decks.length;i++){
+					var opt = decks[i];
+					var el = document.createElement("option");
+					el.textContent=opt;
+					el.value=opt;
+					dropDown.appendChild(el);
+				}
+				
+				body.appendChild(builder);
+				body.appendChild(submit);
+			}
+			
+			function finalizeDeck(){
+				var removal = document.getElementById("deckMaker");
+				var dd=document.getElementById("dropDown");
+				var text = removal.value;
+				//If there is text in the text field assume it is properly formatted and send it up
+				if(text.length>2){
+					alert("Creating deck");
+					createDeck(text);
+					removal.parentNode.removeChild(removal);
+					removal=document.getElementById("submit");
+					removal.parentNode.removeChild(removal);
+					dd.parentNode.removeChild(dd);
+					setUp=1;
+					resizeCanvas();
+				}
+				//If there is no text and a deck is selected use the selected deck
+				else if(dd.value.length>1){
+					alert("Selecting "+dd.value);
+					chooseDeck(dd.value);
+					removal.parentNode.removeChild(removal);
+					removal=document.getElementById("submit");
+					removal.parentNode.removeChild(removal);
+					dd.parentNode.removeChild(dd);
+					setUp=1;
+					resizeCanvas();
+				}
+				else{
+					alert("Please create or choose a deck");
+				}
+			}
+			
+			function createDeck(text){
+				//Send up to the backend for a deck creator and to add to decklist
+			}
+			
+			function chooseDeck(text){
+				//Choose the deck with this name
+			}
+			
+			function drawBoard(){
+				//Sends up the client side board and then gets the board form the server
+				//Changes the src of the images it needs to
+			}
+			
+			function selectLeader(){
+				var choice;
+				var body= document.getElementById("body");
+				for(i=0;i<heroes.length;i++){
+					choice = document.createElement("img");
+					choice.id="hero"+i+"";
+					choice.width=cw*2; 
+					choice.height=ch*2;
+					choice.class="rotate0"; 
+					choice.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
+					choice.style="position: absolute; left:15px; top:-15px; z-index:3;"; 
+					choice.style.top=s+"px";
+					choice.style.left=i*cw*2*s*2+s+"px";
+					choice.alt=heroes[i];
+					choice.setAttribute("onclick","leaderChoice(this)"); 
+					body.appendChild(choice)
+				}
+				//Get the list of heroes and place those five pictures 
+				//Make that the leader and put the rest in the council
+			}
+			
+			function leaderChoice(choice){
+				leader=choice.alt;
+				for(i=0;i<heroes.length;i++){
+					if(heroes[i].localeCompare(leader)==0){
+					}
+					else{
+						council.push(heroes[i]);
+					}
+				}
+				for(i=0;i<heroes.length;i++){
+					var removal=document.getElementById("hero"+i+"");
+					removal.parentNode.removeChild(removal);
+				}
+				setUp=2;
+				resizeCanvas();
+			}
+			
 			(function() {
 			   // Start listening to resize events and draw canvas.
 			   initialize();
 				function initialize() {
+				
+					////Need to add a function here to get at least the decks////
+					
 				   // Register an event listener to call the resizeCanvas() function 
 				   // each time the window is resized.
 				   window.addEventListener('resize', resizeCanvas, false);
@@ -238,8 +363,8 @@
 				}
 				
 				function clearPictures(item){
-					//item.src="http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png";
-					item.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
+					item.src="http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png";
+					//item.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
 				}
 				
 				function drawPictures(){
@@ -248,13 +373,14 @@
 					}
 					imgHand=[];
 					drawHand();
+					drawBoard();
 				}
 				
 				function drawHand(){
 					for(var i=0;i<hand.length;i++){
 						var img = document.createElement("img");
 						img.id="hand"+i+"";
-						img.onclick="zoomIn(this)"; 
+						img.setAttribute("onclick","zoomIn(this)"); 
 						img.width=cw; 
 						img.height=ch;
 						img.class="rotate0"; 
@@ -569,6 +695,17 @@
 					drawPictures();
 					pictures.forEach(resizePictures);
 					placePictures();
+					
+					if(setUp<2){
+						c.fillStyle="grey";
+						c.fillRect(0,0,bw,bh);
+						if(setUp<1){
+							deckSelect();
+						}
+						else{
+							selectLeader();
+						}
+					}
 				}
 				
 				function getMousePos(theCanvas, event) {
