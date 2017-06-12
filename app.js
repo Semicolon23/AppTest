@@ -8,14 +8,20 @@ connections=[];
 //What happens when user loads main page. Can do other pages by doing
 // '/newPage' where newPage is the name of the page
 app.get('/', function(req,res){
-	res.sendFile(__dirname + '/testhtml.html');
+	res.sendFile(__dirname + '/index.html');
 });
 
 //Client Server Communication
 io.on('connection', function(socket){
-	connections.push(socket);
-	console.log('** %s players connected', connections.length);
-	/*
+	if(connections.length < 2) {
+		connections.push(socket);
+		console.log('** %s players connected **', connections.length);
+	} else {
+		console.log('** WARNING: Another player tried to connect **');
+		console.log('** They were forcefully removed from the server **');
+		socket.disconnect();
+	};
+	
 	socket.on('cardStat', function(dmg, health){
 
 	});
@@ -23,10 +29,14 @@ io.on('connection', function(socket){
 	socket.on('cardLoc', function(oldLoc, newLoc){
 
 	});
-	*/
+
+	socket.on('playerCapTest', function(){
+		console.log('testing player cap');
+	});
+	
 	socket.on('disconnect', function(){
 		connections.splice(connections.indexOf(socket), 1);
-		console.log('** %s players connected', connections.length);
+		console.log('** %s players connected **', connections.length);
 	});
 });
 

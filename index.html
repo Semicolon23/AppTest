@@ -2,6 +2,19 @@
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="socket.io/socket.io.js"></script>
+		<script>
+		//Colin's Section
+		var socket = io().connect('http://localhost:5000');
+		function testCap(){
+			socket.emit('playerCapTest');
+		}
+
+
+
+
+
+		</script>
 		<style>
 		.modal {
 			display: none; /* Hidden by default */
@@ -764,11 +777,13 @@
 						if(paused<1){
 							alert('Pausing Timer');
 							pauseTimer();
+							testCap();
 							paused=1;
 						}
 						else{
 							alert('Resuming Timer');
 							resumeTimer();
+							testCap();
 							paused=0;
 						}
 					}
