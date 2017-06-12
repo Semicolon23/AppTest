@@ -8,7 +8,7 @@
   },
   "dependencies":{
   	"express":"*",
-  	"body-parser":"*",
+    "body-parser":"*",
     "socket.io":"*"
   },
   "author": "Arena Games LLC: Colin Munroe, Alexander Tieman, Liam Clift, Corbin Baker, Matt Clayton",
