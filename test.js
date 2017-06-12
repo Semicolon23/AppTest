@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app).listen(5000);
-const fs = require('fs');
+//const fs = require('fs');
 const io = require('socket.io')(http);
 
 app.get('/', function(req,res){
