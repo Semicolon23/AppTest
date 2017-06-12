@@ -13,7 +13,7 @@ app.get('/', function(req,res){
 //Client Server Communication
 io.on('connection', function(socket){
 
-
+	
 
 	socket.on('disconnect', function(){
 
