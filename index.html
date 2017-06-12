@@ -177,7 +177,7 @@
 			var minutes=0;
 			//Card displacement for rotated cards
 			var d = (ch-cw)/2;
-			var hand=[];
+			var hand=["https://www.cvknowhow.com/careers/wp-content/uploads/2015/03/Superhero-Leader-JPG-700x642.jpg","https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi","http://nolimitssportsandfitness.com/wp-content/uploads/sites/9/2016/03/Spartan.jpg"];
 			var imgHand=[];
 			var heroes=["Bill","Bob","Beau","Brad","Bart"];
 			var imgHeroes=[];
@@ -279,6 +279,29 @@
 				}
 			}
 			
+			window.onkeyup = function(e){
+			var key = e.keyCode ? e.keyCode : e.which;
+			var object;
+			var target;
+			
+				if (key == 49) {
+					object=hand.splice(0,1);
+					target = document.getElementById("support1a");
+					target.src=object;
+				}
+				else if(key == 50){
+					object=hand.splice(1,1);
+					target = document.getElementById("council1b");
+					target.src=object;
+				}
+				else if(key == 51){
+					object=hand.splice(2,1);
+					target = document.getElementById("council1bs1");
+					target.src=object;
+				}
+       
+			}
+			
 			function createDeck(text){
 				//Send up to the backend for a deck creator and to add to decklist
 			}
@@ -377,7 +400,7 @@
 				}
 				
 				function clearPictures(item){
-					item.src="http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png";
+					//item.src="http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png";
 					//item.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
 				}
 				
@@ -398,7 +421,7 @@
 						img.width=cw; 
 						img.height=ch;
 						img.class="rotate0"; 
-						img.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
+						img.src=hand[i];
 						img.style="position: absolute; left:15px; top:-15px; z-index:3;"; 
 						img.alt="hand";
 						imgHand.push(img);
