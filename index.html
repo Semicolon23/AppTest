@@ -174,7 +174,7 @@
 			var heroes=["Bill","Bob","Beau","Brad","Bart"];
 			var leader;
 			var council=[];
-			var setUp = 2;
+			var setUp = 0;
 			var decks=["Apple", "Banana"];
 			
 			//Keep track of all the images
@@ -284,6 +284,7 @@
 				var choice;
 				var body= document.getElementById("body");
 				for(i=0;i<heroes.length;i++){
+					alert(i);
 					choice = document.createElement("img");
 					choice.id="hero"+i+"";
 					choice.width=cw*2; 
