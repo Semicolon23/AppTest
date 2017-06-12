@@ -30,9 +30,7 @@ io.on('connection', function(socket){
 
 	});
 
-	socket.on('playerCapTest', function(){
-		console.log('testing player cap');
-	});
+
 	
 	socket.on('disconnect', function(){
 		connections.splice(connections.indexOf(socket), 1);
