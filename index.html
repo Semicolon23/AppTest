@@ -8,6 +8,7 @@
 		var socket = io().connect('http://localhost:5000');
 		socket.on('boardUpdate', function(data){
 			enemyArea=data;
+			arena=enemyArea[3];
 		});
 
 
