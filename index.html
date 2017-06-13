@@ -52,7 +52,7 @@
 		}
 
 		/* Add Animation */
-		.modal-content, #caption {    
+		.modal-content, #caption {
 			-webkit-animation-name: zoom;
 			-webkit-animation-duration: 0.6s;
 			animation-name: zoom;
@@ -60,12 +60,12 @@
 		}
 
 		@-webkit-keyframes zoom {
-			from {-webkit-transform:scale(0)} 
+			from {-webkit-transform:scale(0)}
 			to {-webkit-transform:scale(1)}
 		}
 
 		@keyframes zoom {
-			from {transform:scale(0)} 
+			from {transform:scale(0)}
 			to {transform:scale(1)}
 		}
 
@@ -93,7 +93,7 @@
 				width: 100%;
 			}
 		}
-		
+
 		.rotate90 {
 			-webkit-transform: rotate(90deg);
 			-moz-transform: rotate(90deg);
@@ -138,7 +138,7 @@
 		<img id="council1d" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
 		<img id="council1ds1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
 		<img id="council1ds2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
-		
+
 		<img id="reward2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="reward" >
 		<img id="leader2" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:6;" alt="leader" >
 		<img id="leader2s1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="skill" >
@@ -163,13 +163,13 @@
 		<img id="council2d" onclick="zoomIn(this)" width="70" height="100" class="rotate0" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:5;" alt="council" >
 		<img id="council2ds1" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:4;" alt="skill" >
 		<img id="council2ds2" onclick="zoomIn(this)" width="70" height="100" class="rotate90" src="CardBack.png" style="position: absolute; left:15px; top:-15px; z-index:3;" alt="skill" >
-		
+
 		<div id="myModal" class="modal">
 		  <span class="close">&times;</span>
 		  <img class="modal-content" id="img01">
 		  <div id="caption"></div>
 		</div>
-		
+
 		<script>
 			var modal = document.getElementById('myModal');
 			var theCanvas = document.getElementById("myCanvas"),
@@ -200,7 +200,7 @@
 			var councilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var hand=[];
 			var playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
-			
+
 			var ereward=[];
 			var eleader;
 			var eleaderSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
@@ -212,7 +212,7 @@
 			var ecouncilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var enemyArea=[ereward,eleader,eleaderSkills,earena,edungeon,esupport,edeck,ecouncil,ecouncilSkills];
 			var command=[];
-			
+
 			//Keep track of all the images
 			var pictures = [document.getElementById("reward1"),document.getElementById("leader1"),
 					document.getElementById("leader1s1"),document.getElementById("leader1s2"),
@@ -238,14 +238,14 @@
 					document.getElementById("council2c"),document.getElementById("council2cs1"),
 					document.getElementById("council2cs2"), document.getElementById("council2d"),
 					document.getElementById("council2ds1"), document.getElementById("council2ds2")];
-			
+
 			function dummyDeck(){
 				heroes.push({name:"Azmodan",type:"leader",hp:50,dmg:-1,den:0,cd:-1,image:"https://vignette4.wikia.nocookie.net/diablo/images/c/c7/600px-Azmodan-BC2011.jpg/revision/latest/scale-to-width-down/180?cb=20120808020040"});
 				heroes.push({name:"Kulle",type:"leader",hp:40,dmg:-1,den:0,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/f/f3/ZoltunKulle.png/revision/latest?cb=20120606004831"});
 				heroes.push({name:"Belial",type:"leader",hp:45,dmg:-1,den:0,cd:-1,image:"https://hydra-media.cursecdn.com/heroesofthestorm.gamepedia.com/thumb/5/58/BelialArt.jpg/240px-BelialArt.jpg?version=2e1223eca17d6481cfcb02900c7a58b2"});
 				heroes.push({name:"Leoric",type:"leader",hp:55,dmg:-1,den:0,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/2/29/KingLeoric.png/revision/latest?cb=20120603170950"});
 				heroes.push({name:"Diablo",type:"leader",hp:60,dmg:-1,den:0,cd:-1,image:"https://vignette3.wikia.nocookie.net/diablo/images/3/3a/Diablo_Diablo_III_full_body.PNG/revision/latest?cb=20120513133435"});
-			
+
 				reward.push({name:"Chest",type:"reward",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/4/44/D3Chest.png/revision/latest?cb=20160501170356"});
 				reward.push({name:"Map",type:"reward",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://s-media-cache-ak0.pinimg.com/originals/62/0f/83/620f83c378099656bdd9740fea83e3a4.jpg"});
 				reward.push({name:"Loot",type:"reward",hp:-1,dmg:-1,den:-1,cd:-1,image:"http://s3.amazonaws.com/digitaltrends-uploads-prod/2014/05/diablo-3-legendaries.jpg"});
@@ -261,7 +261,7 @@
 				reward.push({name:"Treasure Goblin",type:"reward",hp:-1,dmg:-1,den:-1,cd:-1,image:"http://vignette2.wikia.nocookie.net/diablo/images/a/a3/TGoblinArt.png/revision/latest?cb=20140814103321"});
 				reward.push({name:"Infernal Machine",type:"reward",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://www.diablowiki.net/images/2/2c/Icon_portal_device.png"});
 				reward.push({name:"Town Portal",type:"reward",hp:-1,dmg:-1,den:-1,cd:-1,image:"http://classic.battle.net/images/battle/diablo2exp/images/animations/portal.gif"});
-				
+
 				deck.push({name:"Realm of Terror",type:"Diablo Supreme",hp:-1,dmg:-1,den:-1,cd:4,image:"https://c1.staticflickr.com/4/3934/15403147356_a2695c35fd_b.jpg"});
 				deck.push({name:"Shadow Clone",type:"Diablo Supreme",hp:-1,dmg:-1,den:-1,cd:4,image:"https://vignette3.wikia.nocookie.net/diablo/images/a/a3/Diablo-3-5.jpg/revision/latest?cb=20150919141708"});
 				deck.push({name:"Slash",type:"Diablo",hp:-1,dmg:-1,den:-1,cd:1,image:"http://game-icons.net/icons/lorc/originals/svg/quick-slash.svg"});
@@ -270,7 +270,7 @@
 				deck.push({name:"Fire Wall",type:"Diablo",hp:-1,dmg:-1,den:-1,cd:2,image:"https://vignette2.wikia.nocookie.net/diablo/images/7/78/Monster_Fire_Wall.jpg/revision/latest?cb=20110813213105"});
 				deck.push({name:"Bone Prison",type:"Diablo",hp:-1,dmg:-1,den:-1,cd:3,image:"https://vignette2.wikia.nocookie.net/diablo/images/7/78/BonePrisoner.jpg/revision/latest?cb=20150913104142"});
 				deck.push({name:"Teleport",type:"Diablo",hp:-1,dmg:-1,den:-1,cd:2,image:"https://us.battle.net/d3/static/images/hero/skill/wizard/teleport.jpg?v=58-100"});
-				
+
 				deck.push({name:"Skeleton",type:"Leoric",hp:-1,dmg:-1,den:-1,cd:-1,image:"http://vignette3.wikia.nocookie.net/diablo/images/2/2d/Skeleton_Shieldman.jpg/revision/latest?cb=20080826061736"});
 				deck.push({name:"Skeletal Swing",type:"Leoric",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://static.icy-veins.com/images/heroes/icons/large/storm_ui_icon_leoric_skeletalswing_undead.jpg"});
 				deck.push({name:"Demon",type:"Azmodan",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://www.primagames.com/media/images/news/diablo.jpg"});
@@ -279,7 +279,7 @@
 				deck.push({name:"Confidence",type:"Belial",hp:-1,dmg:-1,den:-1,cd:-1,image:"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=205224&type=card"});
 				deck.push({name:"Tornado",type:"Kulle",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/2/2e/Energy-twister5-sml.jpg/revision/latest?cb=20140606111755"});
 				deck.push({name:"Time Bubble",type:"Kulle",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://us.battle.net/d3/static/images/hero/skill/wizard/slow-time.jpg?v=58-100"});
-				
+
 				deck.push({name:"Tomb Guardian",type:"support",hp:3,dmg:3,den:-1,cd:-1,image:"http://www.diablo1.ru/images/diablo3/monsters/tomb-guardian.jpg"});
 				deck.push({name:"Tomb Guardian",type:"support",hp:3,dmg:3,den:-1,cd:-1,image:"http://www.diablo1.ru/images/diablo3/monsters/tomb-guardian.jpg"});
 				deck.push({name:"Ghostly Murderer",type:"support",hp:2,dmg:4,den:-1,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/6/63/GHASTLY_GRAVEDIGGER.jpg/revision/latest?cb=20140525013438"});
@@ -304,7 +304,7 @@
 				deck.push({name:"Collosal Golgor",type:"support",hp:4,dmg:3,den:-1,cd:-1,image:"http://vignette3.wikia.nocookie.net/diablo/images/1/13/5_Blorth_c.jpg/revision/latest?cb=20140821110432"});
 				deck.push({name:"Demonic Hellflyer",type:"support",hp:2,dmg:3,den:-1,cd:-1,image:"https://www.diablowiki.net/images/b/b7/Blizzcon2009hellflyer.jpg"});
 				deck.push({name:"Demonic Hellflyer",type:"support",hp:2,dmg:3,den:-1,cd:-1,image:"https://www.diablowiki.net/images/b/b7/Blizzcon2009hellflyer.jpg"});
-				
+
 				deck.push({name:"Succubus",type:"support",hp:2,dmg:1,den:-1,cd:-1,image:"https://i.ytimg.com/vi/g3_jpFMwXHc/maxresdefault.jpg"});
 				deck.push({name:"Succubus",type:"support",hp:2,dmg:1,den:-1,cd:-1,image:"https://i.ytimg.com/vi/g3_jpFMwXHc/maxresdefault.jpg"});
 				deck.push({name:"Siegebreaker Assault Beast",type:"support",hp:6,dmg:4,den:-1,cd:-1,image:"https://www.diabloii.net/gallery/data/580/medium/WWI_08-42.jpg"});
@@ -313,12 +313,12 @@
 				deck.push({name:"Terror Demon",type:"support",hp:3,dmg:4,den:-1,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/8/85/Terror_demon.png/revision/latest/scale-to-width-down/180?cb=20170511161529"});
 				deck.push({name:"Terror Demon",type:"support",hp:3,dmg:4,den:-1,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/8/85/Terror_demon.png/revision/latest/scale-to-width-down/180?cb=20170511161529"});
 				deck.push({name:"Terror Demon",type:"support",hp:3,dmg:4,den:-1,cd:-1,image:"https://vignette1.wikia.nocookie.net/diablo/images/8/85/Terror_demon.png/revision/latest/scale-to-width-down/180?cb=20170511161529"});
-				
+
 				deck.push({name:"Pinnacle of Heaven",type:"arena",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://vignette2.wikia.nocookie.net/diablo/images/2/2d/HH.png/revision/latest?cb=20120601013826"});
 				deck.push({name:"Butcher Arena",type:"arena",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://i.ytimg.com/vi/oj_E76Y_oNM/maxresdefault.jpg"});
 				deck.push({name:"Heart of Sin",type:"arena",hp:-1,dmg:-1,den:-1,cd:-1,image:"https://www.google.com/search?q=diablo+3+pinnacle+of+heaven&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjo5rG-xrnUAhUBUmMKHfbcDVYQ_AUIDCgD&biw=950&bih=930#tbm=isch&q=diablo+3+heart+of+sin&imgrc=twExNt9mnFrECM:"});
 				deck.push({name:"Leoric's Throne Room",type:"arena",hp:-1,dmg:-1,den:-1,cd:-1,image:"http://www.i-mockery.com/blizzcon08/wizard-in-throne-room.jpg"});
-				
+
 				deck.push({name:"Nephalem Rift",type:"trial",hp:14,dmg:-1,den:-1,cd:-1,image:"https://vignette4.wikia.nocookie.net/diablo/images/2/2c/Nephalem_Obelisk.jpg/revision/latest?cb=20140101074501"});
 				deck.push({name:"Siege of Bastion's Keep",type:"trial",hp:12,dmg:-1,den:-1,cd:-1,image:"https://i.ytimg.com/vi/RWPHB8zUVQ8/maxresdefault.jpg"});
 				deck.push({name:"Cursed Chest",type:"trial",hp:10,dmg:-1,den:-1,cd:-1,image:"http://vignette2.wikia.nocookie.net/diablo/images/f/f9/D3CursedChest.jpg/revision/latest?cb=20140412124017"});
@@ -328,7 +328,7 @@
 				deck.push({name:"Black Soulstone",type:"trial",hp:13,dmg:-1,den:-1,cd:-1,image:"https://vignette2.wikia.nocookie.net/diablo/images/b/b8/Black_Soulstone.png/revision/latest?cb=20111024132237"});
 				deck.push({name:"Deckard Cain",type:"trial",hp:1,dmg:-1,den:-1,cd:-1,image:"https://vignette2.wikia.nocookie.net/diablo/images/4/4f/Deckard_Cain_D3.jpg/revision/latest?cb=20131015114726"});
 			}
-			
+
 			function shuffle(a) {
 				var j, x, i;
 				for (i = a.length; i; i--) {
@@ -338,7 +338,7 @@
 					a[j] = x;
 				}
 			}
-			
+
 			function deckSelect(){
 				var body = document.getElementById("body");
 				//Create a text area for them to put in a deck
@@ -347,14 +347,14 @@
 				builder.rows="63";
 				builder.cols="45";
 				builder.style="position: absolute; left:0px; top:0px; z-index:8;";
-				
+
 				//A button to show when done
 				var submit = document.createElement("button");
 				submit.id="submit";
 				submit.innerHTML="Submit";
-				submit.setAttribute("onclick","finalizeDeck()"); 
+				submit.setAttribute("onclick","finalizeDeck()");
 				submit.style="position: absolute; left:400px; top:50px; z-index:8;";
-				
+
 				//A drop down to select premade decks
 				var dropDown = document.createElement("select");
 				dropDown.id="dropDown";
@@ -367,11 +367,11 @@
 					el.value=opt;
 					dropDown.appendChild(el);
 				}
-				
+
 				body.appendChild(builder);
 				body.appendChild(submit);
 			}
-			
+
 			function finalizeDeck(){
 				var removal = document.getElementById("deckMaker");
 				var dd=document.getElementById("dropDown");
@@ -404,12 +404,12 @@
 					alert("Please create or choose a deck");
 				}
 			}
-			
+
 			window.onkeyup = function(e){
 			var key = e.keyCode ? e.keyCode : e.which;
 			var object;
 			var target;
-			
+
 				//Read key inputs
 				//p for place
 				if (key == 80) {
@@ -483,12 +483,12 @@
 				else if(key==67){
 					command.push("c");
 				}
-				
+
 				//Escape Command
 				if(key==27){
 					command=[];
 				}
-				
+
 				var mark1=0;
 				var mark2=0;
 				//Press Enter for full command
@@ -503,13 +503,13 @@
 								else{
 									mark1=i;
 								}
-								
+
 								command[i]=command[i]+command[i+1];
 								command.splice(i+1,1);
 								i--;
 							}
 					}
-					
+
 					//Draw
 					if(command[0]=="d")
 					{
@@ -518,7 +518,7 @@
 						console.log(hand[hand.length-1].image);
 						console.log(hand[hand.length-1]);
 					}
-					
+
 					//Place
 					if(command[0]=="p"){
 						var c=1;
@@ -618,12 +618,12 @@
 						else{
 							alert("Improper format or error in code");
 						}
-						
+
 						console.log(command);
 						console.log(object.name);
 						console.log(object.image);
 						console.log(object);
-						
+
 						//target
 						if(command[c]=="h"){
 							c++;
@@ -723,22 +723,33 @@
 					}
 					command=[];
 					socket.emit('boardUpdate', test, test, test);
+
+					//Shuffle
+					if(command[0]=="s"){
+						if(command[1]=="v"){
+							shuffle(deck);
+						}
+						else if(command[1]=="r"){
+							shuffle(reward);
+						}
+
+					}
 				}
-       
+
 			}
-			
+
 			function createDeck(text){
 				//Send up to the backend for a deck creator and to add to decklist
 				shuffle(deck);
 				shuffle(reward);
 			}
-			
+
 			function chooseDeck(text){
 				//Choose the deck with this name
 				shuffle(deck);
 				shuffle(reward);
 			}
-			
+
 			function drawBoard(){
 				console.log("Starting drawBoard");
 				if(reward.length>0){pictures[0].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
@@ -765,7 +776,7 @@
 				pictures[21].src=council[3].image;
 				pictures[22].src=councilSkills[6].image;
 				pictures[23].src=councilSkills[7].image;
-				
+
 				if(enemyArea[0].length>0){pictures[24].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
 				pictures[25].src=enemyArea[1].image;
 				pictures[26].src=enemyArea[2][0].image;
@@ -797,18 +808,18 @@
 				//Sends up the client side board and then gets the board form the server
 				//Changes the src of the images it needs to
 			}
-			
+
 			function selectLeader(){
 				var choice;
 				var body= document.getElementById("body");
 				for(i=0;i<heroes.length;i++){
 					choice = document.createElement("img");
 					choice.id=i;
-					choice.width=cw*2; 
+					choice.width=cw*2;
 					choice.height=ch*2;
-					choice.class="rotate0"; 
+					choice.class="rotate0";
 					choice.src=heroes[i].image;
-					choice.style="position: absolute; left:15px; top:-15px; z-index:3;"; 
+					choice.style="position: absolute; left:15px; top:-15px; z-index:3;";
 					choice.style.top=s+"px";
 					choice.style.left=cw*2.5*i+"px";
 					choice.alt=heroes[i].name;
@@ -816,10 +827,10 @@
 					imgHeroes.push(choice);
 					body.appendChild(choice);
 				}
-				//Get the list of heroes and place those five pictures 
+				//Get the list of heroes and place those five pictures
 				//Make that the leader and put the rest in the council
 			}
-			
+
 			function leaderChoice(choice){
 				leader=heroes[choice.id];
 				for(i=0;i<heroes.length;i++){
@@ -835,15 +846,15 @@
 				setUp=2;
 				resizeCanvas();
 			}
-			
+
 			(function() {
 			   // Start listening to resize events and draw canvas.
 			   initialize();
 				function initialize() {
-				
+
 					////Need to add a function here to get at least the decks////
-					
-				   // Register an event listener to call the resizeCanvas() function 
+
+				   // Register an event listener to call the resizeCanvas() function
 				   // each time the window is resized.
 				   window.addEventListener('resize', resizeCanvas, false);
 				   // Draw canvas border for the first time.
@@ -852,7 +863,7 @@
 				   resizeCanvas();
 				   drawElapsedTime();
 				}
-				
+
 				// Runs each time the DOM window resize event fires.
 				// Resets the canvas dimensions to match window,
 				// then draws the new borders accordingly.
@@ -876,17 +887,17 @@
 						redraw();
 					}
 				})();
-				
+
 				function resizePictures(item){
 					item.width=cw;
 					item.height=ch;
 				}
-				
+
 				function clearPictures(item){
 					item.src="http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png";
 					//item.src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";
 				}
-				
+
 				function drawPictures(){
 					for(i=0;i<imgHand.length;i++){
 						imgHand[i].parentNode.removeChild(imgHand[i]);
@@ -900,7 +911,7 @@
 						console.log("Done with drawBoard");
 					}
 				}
-				
+
 				function drawHand(){
 					for(var i=0;i<hand.length;i++){
 					console.log("");
@@ -909,19 +920,19 @@
 					console.log("");
 						var img = document.createElement("img");
 						img.id="hand"+i+"";
-						img.setAttribute("onclick","zoomIn(this)"); 
-						img.width=cw; 
+						img.setAttribute("onclick","zoomIn(this)");
+						img.width=cw;
 						img.height=ch;
-						img.class="rotate0"; 
+						img.class="rotate0";
 						img.src=hand[i].image;
-						img.style="position: absolute; left:15px; top:-15px; z-index:3;"; 
+						img.style="position: absolute; left:15px; top:-15px; z-index:3;";
 						img.alt="hand";
 						imgHand.push(img);
 						var source=document.getElementById("body");
 						source.appendChild(img);
 					}
 				}
-				
+
 				function placeHand(){
 					if(imgHand.length>8){
 						for(i=0;i<imgHand.length;i++){
@@ -945,217 +956,217 @@
 						}
 					}
 				}
-				
+
 				function placePictures(){
 					//Player 1 Area
-					var placer = document.getElementById("reward1"); 
+					var placer = document.getElementById("reward1");
 					placer.style.left=s+d+"px";
 					placer.style.top=s-d+"px";
-					
+
 					placer = document.getElementById("leader1");
 					placer.style.left=((s*2.5)+ch)+"px";
 					placer.style.top=s+"px";
-					
+
 					placer = document.getElementById("leader1s1");
 					placer.style.left=((s*2.5)+ch)+cw/2+d+"px";
 					placer.style.top=s-d+"px";
-					
+
 					placer = document.getElementById("leader1s2");
 					placer.style.left=((s*2.5)+ch)+cw/2+d+"px";
 					placer.style.top=s+(cw*1/5)-d+"px";
-					
+
 					placer = document.getElementById("leader1s3");
 					placer.style.left=((s*2.5)+ch)+cw/2+d+"px";
 					placer.style.top=s+(cw*2/5)-d+"px";
-					
+
 					placer = document.getElementById("arena1");
 					placer.style.left=((s*7)+ch+cw+(ch/2))+d+"px";
 					placer.style.top=(s-d)+"px";
-					
-					placer = document.getElementById("dungeon1"); 
+
+					placer = document.getElementById("dungeon1");
 					placer.style.left=(cw*6+s*4)+"px";
 					placer.style.top=s+"px";
-					
+
 					placer = document.getElementById("vault1");
 					placer.style.left=(cw*6+s*4)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
-					placer = document.getElementById("support1a"); 
+
+					placer = document.getElementById("support1a");
 					placer.style.left=(s*1.5)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("support1b");
 					placer.style.left=(s*2.5)+(cw)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("support1c");
 					placer.style.left=(s*3.5)+(cw*2)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("support1d");
 					placer.style.left=(s*4.5)+(cw*3)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("council1a");
 					placer.style.left=(s*1.5)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council1as1"); 
+
+					placer = document.getElementById("council1as1");
 					placer.style.left=(s*1.5)+(cw-ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
-					placer = document.getElementById("council1as2"); 
+
+					placer = document.getElementById("council1as2");
 					placer.style.left=(s*1.5)+(cw-ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
-					placer = document.getElementById("council1b"); 
+
+					placer = document.getElementById("council1b");
 					placer.style.left=(s*2.5)+(cw*1+ch*.5)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council1bs1"); 
+
+					placer = document.getElementById("council1bs1");
 					placer.style.left=(s*2.5)+(cw*2)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
-					placer = document.getElementById("council1bs2"); 
+
+					placer = document.getElementById("council1bs2");
 					placer.style.left=(s*2.5)+(cw*2)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
-					placer = document.getElementById("council1c"); 
+
+					placer = document.getElementById("council1c");
 					placer.style.left=(s*3.5)+(cw*2+ch)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council1cs1"); 
+
+					placer = document.getElementById("council1cs1");
 					placer.style.left=(s*3.5)+(cw*3+ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
-					placer = document.getElementById("council1cs2"); 
+
+					placer = document.getElementById("council1cs2");
 					placer.style.left=(s*3.5)+(cw*3+ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
-					placer = document.getElementById("council1d"); 
+
+					placer = document.getElementById("council1d");
 					placer.style.left=(s*4.5)+(cw*3+ch*1.5)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council1ds1"); 
+
+					placer = document.getElementById("council1ds1");
 					placer.style.left=(s*4.5)+(cw*4+ch)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
+
 					placer = document.getElementById("council1ds2");
 					placer.style.left=(s*4.5)+(cw*4+ch)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
+
 					//Player 2 area
-					placer = document.getElementById("reward2"); 
+					placer = document.getElementById("reward2");
 					placer.style.left=(bw/2)+s+d+"px";
 					placer.style.top=s-d+"px";
-					
+
 					placer = document.getElementById("leader2");
 					placer.style.left=(bw/2)+((s*2.5)+ch)+"px";
 					placer.style.top=s+"px";
-					
+
 					placer = document.getElementById("leader2s1");
 					placer.style.left=(bw/2)+((s*2.5)+ch)+cw/2+d+"px";
 					placer.style.top=s-d+"px";
-					
+
 					placer = document.getElementById("leader2s2");
 					placer.style.left=(bw/2)+((s*2.5)+ch)+cw/2+d+"px";
 					placer.style.top=s+(cw*1/5)-d+"px";
-					
+
 					placer = document.getElementById("leader2s3");
 					placer.style.left=(bw/2)+((s*2.5)+ch)+cw/2+d+"px";
 					placer.style.top=s+(cw*2/5)-d+"px";
-					
+
 					placer = document.getElementById("arena2");
 					placer.style.left=(bw/2)+((s*7)+ch+cw+(ch/2))+d+"px";
 					placer.style.top=(s-d)+"px";
-					
-					placer = document.getElementById("dungeon2"); 
+
+					placer = document.getElementById("dungeon2");
 					placer.style.left=(bw/2)+(cw*6+s*4)+"px";
 					placer.style.top=s+"px";
-					
+
 					placer = document.getElementById("vault2");
 					placer.style.left=(bw/2)+(cw*6+s*4)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
-					placer = document.getElementById("support2a"); 
+
+					placer = document.getElementById("support2a");
 					placer.style.left=(bw/2)+(s*1.5)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("support2b");
 					placer.style.left=(bw/2)+(s*2.5)+(cw)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("support2c");
 					placer.style.left=(bw/2)+(s*3.5)+(cw*2)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("support2d");
 					placer.style.left=(bw/2)+(s*4.5)+(cw*3)+"px";
 					placer.style.top=((s*2)+ch)+"px";
-					
+
 					placer = document.getElementById("council2a");
 					placer.style.left=(bw/2)+(s*1.5)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council2as1"); 
+
+					placer = document.getElementById("council2as1");
 					placer.style.left=(bw/2)+(s*1.5)+(cw-ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
-					placer = document.getElementById("council2as2"); 
+
+					placer = document.getElementById("council2as2");
 					placer.style.left=(bw/2)+(s*1.5)+(cw-ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
-					placer = document.getElementById("council2b"); 
+
+					placer = document.getElementById("council2b");
 					placer.style.left=(bw/2)+(s*2.5)+(cw*1+ch*.5)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council2bs1"); 
+
+					placer = document.getElementById("council2bs1");
 					placer.style.left=(bw/2)+(s*2.5)+(cw*2)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
-					placer = document.getElementById("council2bs2"); 
+
+					placer = document.getElementById("council2bs2");
 					placer.style.left=(bw/2)+(s*2.5)+(cw*2)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
-					placer = document.getElementById("council2c"); 
+
+					placer = document.getElementById("council2c");
 					placer.style.left=(bw/2)+(s*3.5)+(cw*2+ch)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council2cs1"); 
+
+					placer = document.getElementById("council2cs1");
 					placer.style.left=(bw/2)+(s*3.5)+(cw*3+ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
-					placer = document.getElementById("council2cs2"); 
+
+					placer = document.getElementById("council2cs2");
 					placer.style.left=(bw/2)+(s*3.5)+(cw*3+ch*.5)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
-					placer = document.getElementById("council2d"); 
+
+					placer = document.getElementById("council2d");
 					placer.style.left=(bw/2)+(s*4.5)+(cw*3+ch*1.5)+"px";
 					placer.style.top=((s*3.5)+(ch*2))+"px";
-					
-					placer = document.getElementById("council2ds1"); 
+
+					placer = document.getElementById("council2ds1");
 					placer.style.left=(bw/2)+(s*4.5)+(cw*4+ch)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))-d+"px";
-					
+
 					placer = document.getElementById("council2ds2");
 					placer.style.left=(bw/2)+(s*4.5)+(cw*4+ch)+d+"px";
 					placer.style.top=((s*3.5)+(ch*2))+(cw*2/5)-d+"px";
-					
+
 					//Hand
 					placeHand();
 				}
-				
+
 				function redraw(){
 					//Board
 						//Background
 						c.fillStyle="grey";
 						c.fillRect(0,0,bw*2,bh*2);
-						
+
 						c.fillStyle="blue";
 						c.fillRect(0,0,bw/2,bh);
 						c.fillStyle="red";
 						c.fillRect((bw/2)+1,0,bw/2,bh);
-						
+
 						//Player 1
 						c.fillStyle="black";
 						c.fillRect(((s*7)+ch+cw+(ch/2)),s,ch,cw);
@@ -1179,7 +1190,7 @@
 						c.fillText("Support Area", s+12, ((s*1.5)+ch+12));
 						c.fillText("Vault", (cw*6+s*4+5),((s*2)+ch+12));
 						c.fillText("Council", s+12, ((s*3)+(ch*2)+12));
-						
+
 						//Player 2
 						c.fillStyle="black";
 						c.fillRect(((s*7)+ch+cw+(ch/2))+(bw/2),s,ch,cw);
@@ -1203,23 +1214,23 @@
 						c.fillText("Support Area", s+12+(bw/2), ((s*1.5)+ch+12));
 						c.fillText("Vault", (cw*6+s*4+5)+(bw/2),((s*2)+ch+12));
 						c.fillText("Council", s+12+(bw/2), ((s*3)+(ch*2)+12));
-						
+
 						//Hand
 						c.fillStyle="black";
 						c.fillRect(0, ((s*5)+(ch*3)), (cw*8), (s+ch));
 						c.fillStyle="white";
 						c.fillText("Hand", 12, ((s*5)+(ch*3)+12));
-					
+
 					//Phase
 					c.fillStyle="green";
 					c.fillRect(s*18+(bw/2), ((s*9)+(ch*3)), s*20, (s*4));
 					c.fillStyle="yellow";
 					c.fillRect(s*18+(bw/2)+(s*4*(currentPhase-1)), ((s*9)+(ch*3)), s*4, (s*4))
-					
+
 					//Timer
 					c.fillStyle="black";
 					c.fillRect(s*18+(bw/2), ((s*5)+(ch*3)), s*20, (s*4));
-					
+
 					//pictures.forEach(clearPictures);
 					drawPictures();
 					console.log("Entering resize");
@@ -1227,11 +1238,11 @@
 					console.log("Entering placePictures");
 					placePictures();
 					console.log("Done with placePictures");
-					
+
 					//Command
 					c.font="24px Georgia";
 					c.fillText(command,cw*8.5,ch*3+s*10);
-					
+
 					if(setUp<2){
 						c.fillStyle="grey";
 						c.fillRect(0,0,bw,bh);
@@ -1244,7 +1255,7 @@
 					}
 					console.log("Done with redraw");
 				}
-				
+
 				function getMousePos(theCanvas, event) {
 					var rect = theCanvas.getBoundingClientRect();
 					return {
@@ -1255,7 +1266,7 @@
 				function isInside(pos, rect){
 					return pos.x > rect.x && pos.x < rect.x+rect.width && pos.y < rect.y+rect.height && pos.y > rect.y
 				}
-				
+
 				var rect = [{
 					x:s*18+(bw/2),
 					y:((s*5)+(ch*3)),
@@ -1292,10 +1303,10 @@
 					width:s*4,
 					height:(s*4)
 				}];
-				
+
 				theCanvas.addEventListener('click', function(evt) {
 					var mousePos = getMousePos(theCanvas, evt);
-					
+
 					if (isInside(mousePos,rect[0])) {
 						if(paused<1){
 							alert('Pausing Timer');
@@ -1311,30 +1322,30 @@
 					else if(isInside(mousePos,rect[1])){
 						alert('Changing to Judgement Phase');
 						currentPhase=1;
-					}	
+					}
 					else if(isInside(mousePos,rect[2])){
 						alert('Changing to Draw Phase');
 						currentPhase=2;
-					}	
+					}
 					else if(isInside(mousePos,rect[3])){
 						alert('Changing to Tactics Phase');
 						currentPhase=3;
-					}	
+					}
 					else if(isInside(mousePos,rect[4])){
 						alert('Changing to Brawl Phase');
 						currentPhase=4;
-					}	
+					}
 					else if(isInside(mousePos,rect[5])){
 						alert('Changing to End Phase');
 						currentPhase=5;
-					}	
+					}
 					socket.emit('phaseIndicator', currentPhase);
 				});
-				
+
 				function pauseTimer(){
 					window.clearInterval(trueTime)
 				}
-				
+
 				function resumeTimer(){
 					trueTime=setInterval(function(){
 						time++;
@@ -1349,14 +1360,14 @@
 						drawElapsedTime();
 						console.log("done with drawElapsedTime");},1000)
 				}
-				
+
 				function drawElapsedTime(){
 					c.fillStyle="white";
 					c.font="26px Georgia";
 					c.fillText(minutes+":"+time,s*25+(bw/2), ((s*8)+(ch*3)));
 					c.font="12px Georgia";
 				}
-			   
+
 				var modalImg = document.getElementById("img01");
 				function zoomIn(x){
 					modal.style.display = "block";
@@ -1368,7 +1379,7 @@
 				var span = document.getElementsByClassName("close")[0];
 
 				// When the user clicks on <span> (x), close the modal
-				span.onclick = function() { 
+				span.onclick = function() {
 					modal.style.display = "none";
 				}
 		</script>
