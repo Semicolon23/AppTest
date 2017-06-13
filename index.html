@@ -491,7 +491,10 @@
 				else if(key==67){
 					command.push("c");
 				}
-
+				//f for flip
+				else if(key==70){
+					command.push("f");
+				}
 				//Escape Command
 				if(key==27){
 					command=[];
@@ -547,16 +550,18 @@
 					
 					if(command[0]=="f")
 					{
-						c++
-						if(command[c]=="v"){
+						if(command[1]=="v"){
 							flipped=2;
+							alert("Flipped = 2");
 						}
-						else if(command[c]=="r"){
+						else if(command[1]=="r"){
 							flipped=1;
+							alert("Flipped = 1");
 						}
 						else
 						{
 							flipped=0;
+							alert("Flipped = 0");
 						}
 					}
 					
@@ -762,8 +767,6 @@
 						mark1=0;
 						mark2=0;
 					}
-					command=[];
-
 					//Shuffle
 					if(command[0]=="s"){
 						if(command[1]=="v"){
@@ -774,6 +777,7 @@
 						}
 
 					}
+					command=[];
 				}
 
 			}
@@ -793,7 +797,7 @@
 			function drawBoard(){
 				console.log("Starting drawBoard");
 				if(reward.length>0&&flipped!=1){pictures[0].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
-				else if(flipped==1){pictures[0].src=reward.image;}
+				else if(flipped==1){pictures[0].src=reward[reward.length-1].image;}
 				pictures[1].src=leader.image;
 				pictures[2].src=leaderSkills[0].image;
 				pictures[3].src=leaderSkills[1].image;
