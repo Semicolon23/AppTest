@@ -6,8 +6,8 @@
 		<script>
 		//Colin's Section
 		var socket = io().connect('http://localhost:5000');
-		socket.on('update', function(){
-
+		socket.on('boardUpdate', function(data){
+			enemyArea=data;
 		});
 
 
@@ -1338,8 +1338,8 @@
 							time=time-60;
 						}
 						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
-						enemyArea=[];
-						redraw();
+						socket.emit('boardUpdate', playerArea);
+						redraw(); //COLIN TAG!
 						console.log("Entering drawElapsedTime");
 						drawElapsedTime();
 						console.log("done with drawElapsedTime");},1000)
