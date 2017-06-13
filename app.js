@@ -30,8 +30,9 @@ io.on('connection', function(socket){
 
 	});
 
-	socket.on('boardUpdate', function(){
-
+	socket.on('boardUpdate', function(data){
+		socket.broadcast.emit('boardUpdate', data);
+		console.log('sent data' + data);
 	});
 
 
