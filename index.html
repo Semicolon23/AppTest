@@ -6,7 +6,9 @@
 		<script>
 		//Colin's Section
 		var socket = io().connect('http://localhost:5000');
+		socket.on('update', function(){
 
+		});
 
 
 		</script>
@@ -704,6 +706,7 @@
 						mark2=0;
 					}
 					command=[];
+					socket.emit('boardUpdate', test, test, test);
 				}
        
 			}
