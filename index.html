@@ -4,12 +4,19 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="socket.io/socket.io.js"></script>
 		<script>
-		//Colin's Section
+		/* Listeners and Related Functions */
+
 		var socket = io().connect('http://localhost:5000');
+
+		/* Listens for the boardUpdate from server. When detected,
+		it takes enemy board data and puts it into it's right side */
 		socket.on('boardUpdate', function(data){
 			enemyArea=data;
 			arena=enemyArea[3];
 		});
+
+		/*Listens for phaseIndicator from server. When detected,
+		it sets the phase indicator to whatever other client clicked */
 		socket.on('phaseIndicator', function(data){
 			currentPhase=data;
 		})
@@ -1344,7 +1351,7 @@
 						}
 						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
 						socket.emit('boardUpdate', playerArea);
-						redraw(); //COLIN TAG!
+						redraw();
 						console.log("Entering drawElapsedTime");
 						drawElapsedTime();
 						console.log("done with drawElapsedTime");},1000)
