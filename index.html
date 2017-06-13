@@ -195,6 +195,7 @@
 			var imgHand=[];
 			var heroes=[];
 			var imgHeroes=[];
+			var overlay=[];
 			var setUp = 0;
 			var decks=[];
 			var reward=[];
@@ -487,7 +488,7 @@
 				else if(key==57){
 					command.push("9");
 				}
-				//c for council
+				//c for council or cooldown
 				else if(key==67){
 					command.push("c");
 				}
@@ -495,11 +496,30 @@
 				else if(key==70){
 					command.push("f");
 				}
+				//m for math
+				else if(key==77){
+					command.push("m");
+				}
+				//+ for value changing
+				else if(key==187||key==107){
+					command.push("+");
+				}
+				//- for value changing
+				else if(key==187||key==109){
+					command.push("+");
+				}
+				//g for damage
+				else if(key==71){
+					command.push("g");
+				}
+				
+				
 				//Escape Command
 				if(key==27){
 					command=[];
 				}
 				
+				//Cycle through deck with right and left arrow
 				if(key==39&&flipped==2){
 					var object = deck[0];
 					deck.splice(0,1);
@@ -518,6 +538,7 @@
 					var object = reward.pop();
 					reward.splice(0,0,object);
 				}
+				
 				var mark1=0;
 				var mark2=0;
 				//Press Enter for full command
@@ -548,6 +569,7 @@
 						console.log(hand[hand.length-1]);
 					}
 					
+					//Flip
 					if(command[0]=="f")
 					{
 						if(command[1]=="v"){
@@ -562,6 +584,133 @@
 						{
 							flipped=0;
 							alert("Flipped = 0");
+						}
+					}
+					
+					//Add or subtract values AKA Math
+					//Ex: ms1h+1 is math->support1->health->add->1
+					//		mls2c-2 is math->leader->skill 2->cooldown->minus->2
+					if(command[0]=="m"){
+						var c=1;
+						if(command[c]=="l"){
+							console.log("Leader");
+							c++;
+							if(command[c]=="s"){
+								c++
+								if(command[c]=="1"){
+									c++;
+									if(command[c]=="c"){
+										c++;
+										if(command[c]=="+"){
+											c++;
+											leaderSkills[0].cd=leaderSkills[0].cd+parseInt(command[c]);
+										}
+										else if(command[c]=="-"){
+											c++;
+											leaderSkills[0].cd=leaderSkills[0].cd-parseInt(command[c]);
+										}
+									}
+								}
+								else if(command[c]=="2"){
+									c++;
+									if(command[c]=="c"){
+										c++;
+										if(command[c]=="+"){
+											c++;
+											leaderSkills[1].cd=leaderSkills[1].cd+parseInt(command[c]);
+										}
+										else if(command[c]=="-"){
+											c++;
+											leaderSkills[1].cd=leaderSkills[1].cd-parseInt(command[c]);
+										}
+									}
+								}
+								else if(command[c]=="3"){
+									c++;
+									if(command[c]=="c"){
+										c++;
+										if(command[c]=="+"){
+											c++;
+											leaderSkills[2].cd=leaderSkills[2].cd+parseInt(command[c]);
+										}
+										else if(command[c]=="-"){
+											c++;
+											leaderSkills[2].cd=leaderSkills[2].cd-parseInt(command[c]);
+										}
+									}
+								}
+							}
+							else{
+								c++;
+								if(command[c]=="d"){
+									c++;
+									if(command[c]=="+"){
+										c++;
+										leader.den=leader.den+parseInt(command[c]);
+									}
+									else if(command[c]=="-"){
+										c++;
+										leader.den=leader.den-parseInt(command[c]);
+									}
+								}
+								else if(command[c]=="h"){
+									c++;
+									if(command[c]=="+"){
+										c++;
+										leader.hp=leader.hp+parseInt(command[c]);
+									}
+									else if(command[c]=="-"){
+										c++;
+										leader.hp=leader.hp-parseInt(command[c]);
+									}
+								}
+							}
+						}
+						else if(command[c]=="s"){
+							c++;
+							var whichSupport=0;
+							whichSupport=parseInt(command[c])-1;
+							c++;
+							if(command[c]=="g"){
+								c++;
+								if(command[c]=="+"){
+									c++;
+									support[whichSupport].dmg=support[whichSupport].dmg+parseInt(command[c]);
+								}
+								else if(command[c]=="-"){
+									c++;
+									support[whichSupport].dmg=support[whichSupport].dmg-parseInt(command[c]);
+								}
+							}
+							else if(command[c]=="h"){
+								c++;
+								if(command[c]=="+"){
+									c++;
+									support[whichSupport].hp=support[whichSupport].hp+parseInt(command[c]);
+								}
+								else if(command[c]=="-"){
+									c++;
+									support[whichSupport].hp=support[whichSupport].hp-parseInt(command[c]);
+								}
+							}
+						}
+						else if(command[c]=="c"){
+							console.log("Council");
+							c++;
+							var whichCouncil=0;
+							whichCouncil=parseInt(command[c])-1;
+							c++;
+							if(command[c]=="d"){
+								c++;
+								if(command[c]=="+"){
+									c++;
+									council[whichCouncil].den=council[whichCouncil].den+parseInt(command[c]);
+								}
+								else if(command[c]=="-"){
+									c++;
+									council[whichCouncil].den=council[whichCouncil].den-parseInt(command[c]);
+								}
+							}
 						}
 					}
 					
@@ -767,6 +916,7 @@
 						mark1=0;
 						mark2=0;
 					}
+					
 					//Shuffle
 					if(command[0]=="s"){
 						if(command[1]=="v"){
@@ -979,6 +1129,169 @@
 					}
 				}
 
+				function numberOverlay(){
+					var len = overlay.length;
+					for(i=0;i<len;i++){
+						overlay[i].parentNode.removeChild(overlay[i]);
+					}
+					
+					var source=document.getElementById("body");
+					var text = document.createElement("p");
+					//Leader overlay
+					text.id="leaderNum";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					//If this doesn't work then maybe try appending it to the source then changing the left and top
+					text.style.left=((s*2.5)+ch)+"px"
+					text.style.top=s+"px"
+					text.innerHTML = "HP:"+leader.hp+"<br />"+"DEN:"+leader.den;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					if(leaderSkills[0].name.length>0){
+						var text = document.createElement("p");
+						//Leader skill 1 overlay
+						text.id="ls1Num";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=((s*2.5)+ch)+cw*3/4+"px";
+						text.top=s+"px"
+						text.innerHTML = leaderSkills[0].cd;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(leaderSkills[1].name.length>0){
+						var text = document.createElement("p");
+						//Leader skill 2 overlay
+						text.id="ls2Num";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=((s*2.5)+ch)+cw*3/4+"px";
+						text.style.top=s+(cw*1/5)+"px";
+						text.innerHTML = leaderSkills[1].cd;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(leaderSkills[2].name.length>0){
+						var text = document.createElement("p");
+						//Leader skill 3 overlay
+						text.id="ls3Num";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=((s*2.5)+ch)+cw*3/4+d+"px";
+						text.style.top=s+(cw*4/5)+"px";
+						text.innerHTML = leaderSkills[2].cd;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					var text = document.createElement("p");
+					//Reward overlay
+					text.id="rewardNum";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style.left=s+"px"
+					text.style.top=s+"px"
+					text.innerHTML = reward.length;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					var text = document.createElement("p");
+					//Vault overlay
+					text.id="vaultNum";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style.left=(cw*6+s*4)+"px";
+					text.style.top=((s*2)+ch)+"px";
+					text.innerHTML = deck.length;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					if(support[0].name.length>0){
+						var text = document.createElement("p");
+						//Support1 overlay
+						text.id="support1";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=(s*1.5)+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(support[1].name.length>0){
+						var text = document.createElement("p");
+						//Support2 overlay
+						text.id="support2";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=(s*2.5)+(cw)+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(support[2].name.length>0){
+						var text = document.createElement("p");
+						//Support3 overlay
+						text.id="support3";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=(s*3.5)+(cw*2)+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(support[3].name.length>0){
+						var text = document.createElement("p");
+						//Support4 overlay
+						text.id="support4";
+						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style.left=(s*4.5)+(cw*3)+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					var text = document.createElement("p");
+					//Council1 overlay
+					text.id="council1Num";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style.left=(s*1.5)+"px";
+					text.style.top=((s*3.5)+(ch*2))+"px";
+					text.innerHTML = "DEN:"+council[0].den;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					var text = document.createElement("p");
+					//Council2 overlay
+					text.id="council2Num";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style.left=(s*2.5)+(cw*1+ch*.5)+"px";
+					text.style.top=((s*3.5)+(ch*2))+"px";
+					text.innerHTML = "DEN:"+council[1].den;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					var text = document.createElement("p");
+					//Council3 overlay
+					text.id="council3Num";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style.left=(s*3.5)+(cw*2+ch)+"px";
+					text.style.top=((s*3.5)+(ch*2))+"px";
+					text.innerHTML = "DEN:"+council[2].den;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					var text = document.createElement("p");
+					//Council4 overlay
+					text.id="council4Num";
+					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style.left=(s*4.5)+(cw*3+ch*1.5)+"px";
+					text.style.top=((s*3.5)+(ch*2))+"px";
+					text.innerHTML = "DEN:"+council[3].den;
+					source.appendChild(text);
+					overlay.push(text);
+				}
+				
 				function placeHand(){
 					if(imgHand.length>8){
 						for(i=0;i<imgHand.length;i++){
@@ -1289,6 +1602,9 @@
 					c.font="24px Georgia";
 					c.fillText(command,cw*8.5,ch*3+s*10);
 
+					//Overlay
+					numberOverlay();
+					
 					if(setUp<2){
 						c.fillStyle="grey";
 						c.fillRect(0,0,bw,bh);
