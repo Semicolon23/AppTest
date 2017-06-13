@@ -30,6 +30,10 @@ io.on('connection', function(socket){
 
 	});
 
+	socket.on('boardUpdate', function(){
+
+	});
+
 
 	
 	socket.on('disconnect', function(){
