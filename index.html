@@ -182,6 +182,7 @@
 			var trueTime;
 			var time=0;
 			var minutes=0;
+			var flipped=0;
 			//Card displacement for rotated cards
 			var d = (ch-cw)/2;
 			var imgHand=[];
@@ -489,6 +490,25 @@
 					command=[];
 				}
 				
+				if(key==39&&flipped==2){
+					var object = deck[0];
+					deck.splice(0,1);
+					deck.push(object);
+				}
+				if(key==37&&flipped==2){
+					var object = deck.pop();
+					deck.splice(0,0,object);
+				}
+				if(key==39&&flipped==1){
+					var object = reward[0];
+					reward.splice(0,1);
+					reward.push(object);
+				}
+				if(key==37&&flipped==1){
+					var object = reward.pop();
+					reward.splice(0,0,object);
+				}
+				
 				var mark1=0;
 				var mark2=0;
 				//Press Enter for full command
@@ -517,6 +537,21 @@
 						console.log(hand[hand.length-1].name);
 						console.log(hand[hand.length-1].image);
 						console.log(hand[hand.length-1]);
+					}
+					
+					if(command[0]=="f")
+					{
+						c++
+						if(command[c]=="v"){
+							flipped=2;
+						}
+						else if(command[c]=="r"){
+							flipped=1;
+						}
+						else
+						{
+							flipped=0;
+						}
 					}
 					
 					//Place
@@ -741,14 +776,16 @@
 			
 			function drawBoard(){
 				console.log("Starting drawBoard");
-				if(reward.length>0){pictures[0].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
+				if(reward.length>0&&flipped!=1){pictures[0].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
+				else if(flipped==1){pictures[0].src=reward.image;}
 				pictures[1].src=leader.image;
 				pictures[2].src=leaderSkills[0].image;
 				pictures[3].src=leaderSkills[1].image;
 				pictures[4].src=leaderSkills[2].image;
 				pictures[5].src=arena.image;
 				if(dungeon.length>0){pictures[6].src=dungeon[dungeon.length-1].image;}
-				if(deck.length>0){pictures[7].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
+				if(deck.length>0&&flipped!=2){pictures[7].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
+				else if(flipped==2){pictures[7].src=deck[deck.length-1].image;}
 				pictures[8].src=support[0].image;
 				pictures[9].src=support[1].image;
 				pictures[10].src=support[2].image;
