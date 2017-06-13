@@ -9,6 +9,9 @@
 		socket.on('boardUpdate', function(data){
 			enemyArea=data;
 		});
+		socket.on('phaseIndicator', function(data){
+			currentPhase=data;
+		})
 
 
 		</script>
@@ -1324,6 +1327,7 @@
 						alert('Changing to End Phase');
 						currentPhase=5;
 					}	
+					socket.emit('phaseIndicator', currentPhase);
 				});
 				
 				function pauseTimer(){

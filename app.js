@@ -35,6 +35,10 @@ io.on('connection', function(socket){
 		console.log('sent data' + data);
 	});
 
+	socket.on('phaseIndicator', function(data){
+		socket.broadcast.emit('phaseIndicator', data);
+	});
+
 
 	
 	socket.on('disconnect', function(){
