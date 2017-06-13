@@ -8,6 +8,7 @@
 		var socket = io().connect('http://localhost:5000');
 		socket.on('boardUpdate', function(data){
 			enemyArea=data;
+			arena=enemyArea[3];
 		});
 		socket.on('phaseIndicator', function(data){
 			currentPhase=data;
@@ -1229,7 +1230,7 @@
 					
 					//Command
 					c.font="24px Georgia";
-					c.fillText(command,cw*9.5,ch*3+s*10);
+					c.fillText(command,cw*8.5,ch*3+s*10);
 					
 					if(setUp<2){
 						c.fillStyle="grey";
