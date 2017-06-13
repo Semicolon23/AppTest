@@ -196,6 +196,16 @@
 			var councilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var hand=[];
 			var playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
+			
+			var ereward=[];
+			var eleader;
+			var eleaderSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
+			var earena={name:"",image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png"};
+			var edungeon=[];
+			var esupport=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
+			var edeck=[];
+			var ecouncil=[];
+			var ecouncilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var enemyArea=[ereward,eleader,eleaderSkills,earena,edungeon,esupport,edeck,ecouncil,ecouncilSkills];
 			var command=[];
 			
@@ -728,53 +738,54 @@
 			function drawBoard(){
 				console.log("Starting drawBoard");
 				if(reward.length>0){pictures[0].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
-				console.log(pictures[0].src+0);
 				pictures[1].src=leader.image;
-				console.log(pictures[1].src+1);
 				pictures[2].src=leaderSkills[0].image;
-				console.log(pictures[2].src+2);
 				pictures[3].src=leaderSkills[1].image;
-				console.log(pictures[3].src+3);
 				pictures[4].src=leaderSkills[2].image;
-				console.log(pictures[4].src+4);
 				pictures[5].src=arena.image;
-				console.log(pictures[5].src+5);
 				if(dungeon.length>0){pictures[6].src=dungeon[dungeon.length-1].image;}
-				console.log(pictures[6].src+6);
 				if(deck.length>0){pictures[7].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
-				console.log(pictures[7].src+7);
 				pictures[8].src=support[0].image;
-				console.log(pictures[8].src+8);
 				pictures[9].src=support[1].image;
-				console.log(pictures[9].src+9);
 				pictures[10].src=support[2].image;
-				console.log(pictures[10].src+10);
 				pictures[11].src=support[3].image;
-				console.log(pictures[11].src+11);
 				pictures[12].src=council[0].image;
-				console.log(pictures[12].src+12);
 				pictures[13].src=councilSkills[0].image;
-				console.log(pictures[13].src+13);
 				pictures[14].src=councilSkills[1].image;
-				console.log(pictures[14].src+14);
 				pictures[15].src=council[1].image;
-				console.log(pictures[15].src+15);
 				pictures[16].src=councilSkills[2].image;
-				console.log(pictures[16].src+16);
 				pictures[17].src=councilSkills[3].image;
-				console.log(pictures[17].src+17);
 				pictures[18].src=council[2].image;
-				console.log(pictures[18].src+18);
 				pictures[19].src=councilSkills[4].image;
-				console.log(pictures[19].src+19);
 				pictures[20].src=councilSkills[5].image;
-				console.log(pictures[20].src+20);
 				pictures[21].src=council[3].image;
-				console.log(pictures[21].src+21);
 				pictures[22].src=councilSkills[6].image;
-				console.log(pictures[22].src+22);
 				pictures[23].src=councilSkills[7].image;
-				console.log(pictures[23].src+23);
+				
+				if(ereward.length>0){pictures[24].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
+				pictures[25].src=eleader.image;
+				pictures[26].src=eleaderSkills[0].image;
+				pictures[27].src=eleaderSkills[1].image;
+				pictures[28].src=eleaderSkills[2].image;
+				pictures[29].src=earena.image;
+				if(edungeon.length>0){pictures[30].src=edungeon[edungeon.length-1].image;}
+				if(edeck.length>0){pictures[31].src="https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/4/4c/Card_back-Pandaria.png/200px-Card_back-Pandaria.png?version=21f7de7534dda27a0df0f9113b27ec68";}
+				pictures[32].src=esupport[0].image;
+				pictures[33].src=esupport[1].image;
+				pictures[34].src=esupport[2].image;
+				pictures[35].src=esupport[3].image;
+				pictures[36].src=ecouncil[0].image;
+				pictures[37].src=ecouncilSkills[0].image;
+				pictures[38].src=ecouncilSkills[1].image;
+				pictures[39].src=ecouncil[1].image;
+				pictures[40].src=ecouncilSkills[2].image;
+				pictures[41].src=ecouncilSkills[3].image;
+				pictures[42].src=ecouncil[2].image;
+				pictures[43].src=ecouncilSkills[4].image;
+				pictures[44].src=ecouncilSkills[5].image;
+				pictures[45].src=ecouncil[3].image;
+				pictures[46].src=ecouncilSkills[6].image;
+				pictures[47].src=ecouncilSkills[7].image;
 				//var picture = document.getElementById("leader1");
 				//picture.src="newsrc.png";
 				//var picture = document.getElementById("leader1");
