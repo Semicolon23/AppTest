@@ -596,7 +596,7 @@
 							console.log("Leader");
 							c++;
 							if(command[c]=="s"){
-								c++
+								c++;
 								if(command[c]=="1"){
 									c++;
 									if(command[c]=="c"){
@@ -1602,8 +1602,7 @@
 					c.font="24px Georgia";
 					c.fillText(command,cw*8.5,ch*3+s*10);
 
-					//Overlay
-					numberOverlay();
+
 					
 					if(setUp<2){
 						c.fillStyle="grey";
@@ -1613,6 +1612,11 @@
 						}
 						else{
 							selectLeader();
+						}
+
+						//Overlay
+						if(setUp==2){
+						numberOverlay();
 						}
 					}
 					console.log("Done with redraw");
