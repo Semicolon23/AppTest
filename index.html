@@ -418,7 +418,7 @@
 			var key = e.keyCode ? e.keyCode : e.which;
 			var object;
 			var target;
-
+				//COLIN
 				//Read key inputs
 				//p for place
 				if (key == 80) {
@@ -929,6 +929,9 @@
 					}
 					command=[];
 				}
+				//COLIN
+				playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
+				socket.emit('boardUpdate', playerArea);
 
 			}
 
@@ -1790,8 +1793,10 @@
 							minutes=minutes+1;
 							time=time-60;
 						}
-						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
-						socket.emit('boardUpdate', playerArea);
+						
+						//COLIN
+						//playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
+						//socket.emit('boardUpdate', playerArea);
 						redraw();
 						console.log("Entering drawElapsedTime");
 						drawElapsedTime();
