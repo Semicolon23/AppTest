@@ -1,10 +1,9 @@
+
 //Set up server using the express framework. Listening on port 5000
 var express = require('express');
 var app = express();
-app.use((req,res)=>res.sendFile(index))
-app.listen(PORT, ()=> console.log('Listening on ${ PORT }'));
-//var http = require('http').Server(app).listen(3000);
-var io = socketIO(app)//require('socket.io')(http);
+var http = require('http').Server(app).listen(8080);
+var io = require('socket.io')(http);
 
 //app.set('port', (process.env.PORT || 5000));
 //app.use(express.static(__dirname + '/public'));
@@ -54,8 +53,4 @@ io.on('connection', function(socket){
 		connections.splice(connections.indexOf(socket), 1);
 		console.log('** %s players connected **', connections.length);
 	});
-});
-
-app.listen(app.get('port'), function() {
-	console.log('Node app is running on port', app.get('port'));
 });
