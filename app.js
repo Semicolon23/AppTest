@@ -14,11 +14,11 @@ io.on('connection', function(socket){
 	if(connections.length < 2) {
 		connections.push(socket);
 		console.log('** %s players connected **', connections.length);
-	} else {
+	}; /*else {
 		console.log('** WARNING: Another player tried to connect **');
 		console.log('** They were forcefully removed from the server **');
 		socket.disconnect();
-	};
+	}; */
 	//Basically Pipelines, takes data from client 1 and pushes
 	//it through to client 2.	
 
@@ -37,6 +37,10 @@ io.on('connection', function(socket){
 	//updated on either client it is updated on other client too.
 	socket.on('phaseIndicator', function(data){
 		socket.broadcast.emit('phaseIndicator', data);
+	});
+
+	socket.on('enemyStats', function(data){
+
 	});
 
 	//Part of player cap / dev testing.
