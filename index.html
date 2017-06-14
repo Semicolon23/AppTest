@@ -1795,8 +1795,8 @@
 						}
 						
 						//COLIN
-						//playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
-						//socket.emit('boardUpdate', playerArea);
+						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
+						socket.emit('boardUpdate', playerArea);
 						redraw();
 						console.log("Entering drawElapsedTime");
 						drawElapsedTime();
