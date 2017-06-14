@@ -447,7 +447,7 @@
 				//d for dungeon or draw
 				else if(key==68){
 					command.push("d");
-				}
+				}ps1d
 				//s for skill and support
 				else if(key==83){
 					command.push("s");
@@ -1143,7 +1143,7 @@
 					var text = document.createElement("p");
 					//Leader overlay
 					text.id="leaderNum";
-					text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+					text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 					//If this doesn't work then maybe try appending it to the source then changing the left and top
 					text.style.left=((s*2.5)+ch)+"px"
 					text.style.top=s+"px"
@@ -1155,7 +1155,7 @@
 						var text = document.createElement("p");
 						//Leader skill 1 overlay
 						text.id="ls1Num";
-						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 						text.style.left=((s*2.5)+ch)+cw*3/4+"px";
 						text.top=s+"px"
 						text.innerHTML = leaderSkills[0].cd;
@@ -1167,7 +1167,7 @@
 						var text = document.createElement("p");
 						//Leader skill 2 overlay
 						text.id="ls2Num";
-						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 						text.style.left=((s*2.5)+ch)+cw*3/4+"px";
 						text.style.top=s+(cw*1/5)+"px";
 						text.innerHTML = leaderSkills[1].cd;
@@ -1179,7 +1179,7 @@
 						var text = document.createElement("p");
 						//Leader skill 3 overlay
 						text.id="ls3Num";
-						text.style="position: absolute; left:15px; top:-15px; z-index:3;"
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 						text.style.left=((s*2.5)+ch)+cw*3/4+d+"px";
 						text.style.top=s+(cw*4/5)+"px";
 						text.innerHTML = leaderSkills[2].cd;
@@ -1226,7 +1226,7 @@
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 						text.style.left=(s*2.5)+(cw)+"px";
 						text.style.top=((s*2)+ch)+"px";
-						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						text.innerHTML = "HP:"+support[1].hp+"<br />"+"DMG:"+support[1].dmg;
 						source.appendChild(text);
 						overlay.push(text);
 					}
@@ -1238,7 +1238,7 @@
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 						text.style.left=(s*3.5)+(cw*2)+"px";
 						text.style.top=((s*2)+ch)+"px";
-						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						text.innerHTML = "HP:"+support[2].hp+"<br />"+"DMG:"+support[2].dmg;
 						source.appendChild(text);
 						overlay.push(text);
 					}
@@ -1250,7 +1250,7 @@
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 						text.style.left=(s*4.5)+(cw*3)+"px";
 						text.style.top=((s*2)+ch)+"px";
-						text.innerHTML = "HP:"+support[0].hp+"<br />"+"DMG:"+support[0].dmg;
+						text.innerHTML = "HP:"+support[3].hp+"<br />"+"DMG:"+support[3].dmg;
 						source.appendChild(text);
 						overlay.push(text);
 					}
