@@ -1133,7 +1133,9 @@
 				console.log("In number overlay");
 					var len = overlay.length;
 					for(i=0;i<len;i++){
-						overlay[i].parentNode.removeChild(overlay[i]);
+						if(overlay[i].id.length>0){
+							overlay[i].parentNode.removeChild(overlay[i]);
+						}
 					}
 					
 					var source=document.getElementById("body");
