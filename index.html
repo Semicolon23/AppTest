@@ -1296,6 +1296,7 @@
 					overlay.push(text);
 					
 					//Enemy Overlay
+					console.log("Starting enemy overlay");
 					var text = document.createElement("p");
 					//Leader overlay
 					text.id="eleaderNum";
@@ -1303,6 +1304,8 @@
 					//If this doesn't work then maybe try appending it to the source then changing the left and top
 					text.style.left=((s*2.5)+ch)+bw+"px"
 					text.style.top=s+"px"
+					console.log(enemyArea[1].hp);
+					console.log(enemyArea[1].name);
 					text.innerHTML = "HP:"+enemyArea[1].hp+"<br />"+"DEN:"+enemyArea[1].den;
 					source.appendChild(text);
 					overlay.push(text);
