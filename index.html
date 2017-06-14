@@ -1294,6 +1294,66 @@
 					text.innerHTML = "DEN:"+council[3].den;
 					source.appendChild(text);
 					overlay.push(text);
+					
+					//Enemy Overlay
+					var text = document.createElement("p");
+					//Leader overlay
+					text.id="eleaderNum";
+					text.style="position: absolute; left:15px; top:-15px; z-index:9;"
+					//If this doesn't work then maybe try appending it to the source then changing the left and top
+					text.style.left=((s*2.5)+ch)+bw+"px"
+					text.style.top=s+"px"
+					text.innerHTML = "HP:"+enemyArea[1].hp+"<br />"+"DEN:"+enemyArea[1].den;
+					source.appendChild(text);
+					overlay.push(text);
+					
+					if(enemyArea[5][0].name.length>0){
+						var text = document.createElement("p");
+						//Support1 overlay
+						text.id="esupport1";
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
+						text.style.left=(s*1.5)+bw+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+enemyArea[5][0].hp+"<br />"+"DMG:"+enemyArea[5][0].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(enemyArea[5][1].name.length>0){
+						var text = document.createElement("p");
+						//Support2 overlay
+						text.id="esupport2";
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
+						text.style.left=(s*2.5)+(cw)+bw+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+enemyArea[5][1].hp+"<br />"+"DMG:"+enemyArea[5][1].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(enemyArea[5][2].name.length>0){
+						var text = document.createElement("p");
+						//Support3 overlay
+						text.id="esupport3";
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
+						text.style.left=(s*3.5)+(cw*2)+bw+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+enemyArea[5][2].hp+"<br />"+"DMG:"+enemyArea[5][2].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
+					
+					if(enemyArea[5][3].name.length>0){
+						var text = document.createElement("p");
+						//Support4 overlay
+						text.id="esupport4";
+						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
+						text.style.left=(s*4.5)+(cw*3)+bw+"px";
+						text.style.top=((s*2)+ch)+"px";
+						text.innerHTML = "HP:"+enemyArea[5][3].hp+"<br />"+"DMG:"+enemyArea[5][3].dmg;
+						source.appendChild(text);
+						overlay.push(text);
+					}
 				}
 				
 				function placeHand(){
