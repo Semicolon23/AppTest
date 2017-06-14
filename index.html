@@ -1131,12 +1131,13 @@
 
 				function numberOverlay(){
 				console.log("In number overlay");
-					var len = overlay.length;
-					for(i=0;i<len;i++){
+					for(i=0;i<overlay.length;i++){
+						console.log(overlay[i].id);
 						if(overlay[i].id.length>0){
 							overlay[i].parentNode.removeChild(overlay[i]);
 						}
 					}
+					overlay=[];
 					
 					var source=document.getElementById("body");
 					var text = document.createElement("p");
