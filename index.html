@@ -211,13 +211,13 @@
 			var playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
 
 			var ereward=[];
-			var eleader;
+			var eleader={name:"",image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png"};
 			var eleaderSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var earena={name:"",image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png"};
 			var edungeon=[];
 			var esupport=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var edeck=[];
-			var ecouncil=[];
+			var ecouncil=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var ecouncilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var enemyArea=[ereward,eleader,eleaderSkills,earena,edungeon,esupport,edeck,ecouncil,ecouncilSkills];
 			var command=[];
@@ -933,7 +933,8 @@
 			}
 
 			function createDeck(text){
-				//Send up to the backend for a deck creator and to add to decklist
+				//Send up to the bad
+				ckend for a deck creator and to add to decklist
 				shuffle(deck);
 				shuffle(reward);
 			}
@@ -1130,6 +1131,7 @@
 				}
 
 				function numberOverlay(){
+				console.log("In number overlay");
 					var len = overlay.length;
 					for(i=0;i<len;i++){
 						overlay[i].parentNode.removeChild(overlay[i]);
@@ -1614,10 +1616,13 @@
 							selectLeader();
 						}
 
-						//Overlay
-						if(setUp==2){
+						
+						
+					}
+					//Overlay
+					if(setUp==2){
+						console.log("Entering numberoverlay");
 						numberOverlay();
-						}
 					}
 					console.log("Done with redraw");
 				}
