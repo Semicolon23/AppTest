@@ -1,11 +1,13 @@
 //Set up server using the express framework. Listening on port 5000
 var express = require('express');
 var app = express();
-var http = require('http').Server(app).listen(3000);
-var io = require('socket.io')(http);
+app.use((req,res)=>res.sendFile(index))
+app.listen(PORT, ()=> console.log('Listening on ${ PORT }'));
+//var http = require('http').Server(app).listen(3000);
+var io = socketIO(app)//require('socket.io')(http);
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
+//app.set('port', (process.env.PORT || 5000));
+//app.use(express.static(__dirname + '/public'));
 
 //Array of connected users
 connections=[];
