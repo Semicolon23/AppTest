@@ -1302,7 +1302,7 @@
 					text.id="eleaderNum";
 					text.style="position: absolute; left:15px; top:-15px; z-index:9;"
 					//If this doesn't work then maybe try appending it to the source then changing the left and top
-					text.style.left=((s*2.5)+ch)+bw+"px"
+					text.style.left=((s*2.5)+ch)+(bw/2)+"px"
 					text.style.top=s+"px"
 					console.log(enemyArea[1].hp);
 					console.log(enemyArea[1].name);
@@ -1316,7 +1316,7 @@
 						//Support1 overlay
 						text.id="esupport1";
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
-						text.style.left=(s*1.5)+bw+"px";
+						text.style.left=(s*1.5)+(bw/2)+"px";
 						text.style.top=((s*2)+ch)+"px";
 						text.innerHTML = "HP:"+enemyArea[5][0].hp+"<br />"+"DMG:"+enemyArea[5][0].dmg;
 						source.appendChild(text);
@@ -1328,7 +1328,7 @@
 						//Support2 overlay
 						text.id="esupport2";
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
-						text.style.left=(s*2.5)+(cw)+bw+"px";
+						text.style.left=(s*2.5)+(cw)+(bw/2)+"px";
 						text.style.top=((s*2)+ch)+"px";
 						text.innerHTML = "HP:"+enemyArea[5][1].hp+"<br />"+"DMG:"+enemyArea[5][1].dmg;
 						source.appendChild(text);
@@ -1340,7 +1340,7 @@
 						//Support3 overlay
 						text.id="esupport3";
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
-						text.style.left=(s*3.5)+(cw*2)+bw+"px";
+						text.style.left=(s*3.5)+(cw*2)+(bw/2)+"px";
 						text.style.top=((s*2)+ch)+"px";
 						text.innerHTML = "HP:"+enemyArea[5][2].hp+"<br />"+"DMG:"+enemyArea[5][2].dmg;
 						source.appendChild(text);
@@ -1352,7 +1352,7 @@
 						//Support4 overlay
 						text.id="esupport4";
 						text.style="position: absolute; left:15px; top:-15px; z-index:9;"
-						text.style.left=(s*4.5)+(cw*3)+bw+"px";
+						text.style.left=(s*4.5)+(cw*3)+(bw/2)+"px";
 						text.style.top=((s*2)+ch)+"px";
 						text.innerHTML = "HP:"+enemyArea[5][3].hp+"<br />"+"DMG:"+enemyArea[5][3].dmg;
 						source.appendChild(text);
