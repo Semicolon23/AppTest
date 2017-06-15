@@ -213,7 +213,7 @@
 			var councilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var hand=[];
 			//COLIN
-			var playerArea=[reward,leader,leaderSkills,/*arena,*/dungeon,support,deck,council,councilSkills];
+			var playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
 
 			var ereward=[];
 			var eleader={name:"",image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png"};
@@ -1797,7 +1797,7 @@
 						}
 						
 						//COLIN
-						playerArea=[reward,leader,leaderSkills,/*arena,*/dungeon,support,deck,council,councilSkills];
+						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
 						socket.emit('boardUpdate', playerArea);
 						redraw();
 						console.log("Entering drawElapsedTime");
