@@ -27,6 +27,10 @@ io.on('connection', function(socket){
 		socket.broadcast.emit('phaseIndicator', data);
 	});
 
+	socket.on('arenaUpdate', function(data){
+		io.emit('arenaUpdate', data);
+	});
+
 	//+++ADD NEW LISTENERS HERE IF NEEDED+++//
 
 

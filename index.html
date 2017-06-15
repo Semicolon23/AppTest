@@ -21,6 +21,10 @@
 			currentPhase=data;
 		})
 
+		socket.on('arenaUpdate', function(data){
+			arena=data;
+		});
+
 
 		</script>
 		<style>
@@ -208,7 +212,8 @@
 			var council=[];
 			var councilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var hand=[];
-			var playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
+			//COLIN
+			var playerArea=[reward,leader,leaderSkills,/*arena,*/dungeon,support,deck,council,councilSkills];
 
 			var ereward=[];
 			var eleader={name:"",image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png"};
@@ -418,7 +423,6 @@
 			var key = e.keyCode ? e.keyCode : e.which;
 			var object;
 			var target;
-				//COLIN
 				//Read key inputs
 				//p for place
 				if (key == 80) {
@@ -863,7 +867,9 @@
 						else if(command[c]=="a"){
 							c++;
 							arena=object;
+							socket.emit('arenaUpdate', object);
 							console.log(arena.image+"    Arena Image");
+							//COLIN
 						}
 						else if(command[c]=="d"){
 							c++;
@@ -929,10 +935,6 @@
 					}
 					command=[];
 				}
-				//COLIN
-				playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
-				socket.emit('boardUpdate', playerArea);
-
 			}
 
 			function createDeck(text){
@@ -1795,7 +1797,7 @@
 						}
 						
 						//COLIN
-						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
+						playerArea=[reward,leader,leaderSkills,/*arena,*/dungeon,support,deck,council,councilSkills];
 						socket.emit('boardUpdate', playerArea);
 						redraw();
 						console.log("Entering drawElapsedTime");
