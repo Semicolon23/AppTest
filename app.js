@@ -31,6 +31,14 @@ io.on('connection', function(socket){
 		io.emit('arenaUpdate', data);
 	});
 
+	socket.on('deckInit', function(data){
+		//DB REF GOES HERE, PUT CARDS INTO VAR DECK
+
+
+		//*************************************
+		socket.emit(deckInit, deck);
+	});
+
 	//+++ADD NEW LISTENERS HERE IF NEEDED+++//
 
 

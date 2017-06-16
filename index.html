@@ -25,6 +25,13 @@
 			arena=data;
 		});
 
+		socket.on('deckInit', function(data){
+			//WHATEVER HAPPENS TO DECK GOES HERE (after DB)
+
+
+			//******************************
+		});
+
 
 		</script>
 		<style>
@@ -967,6 +974,7 @@
 				}
 
 				console.log(decklist);
+				socket.emit('deckInit', decklist);
 				shuffle(deck);
 				shuffle(reward);
 			}
