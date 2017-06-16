@@ -21,6 +21,17 @@
 			currentPhase=data;
 		})
 
+		socket.on('arenaUpdate', function(data){
+			arena=data;
+		});
+
+		socket.on('deckInit', function(data){
+			//WHATEVER HAPPENS TO DECK GOES HERE (after DB)
+
+
+			//******************************
+		});
+
 
 		</script>
 		<style>
@@ -212,6 +223,7 @@
 			var council=[];
 			var councilSkills=[{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""},{image:"http://pinktiger.com/janscustomcrystals/wp-content/themes/pinktiger/image/patterns/transparent/p51.png", name:""}];
 			var hand=[];
+			//COLIN
 			var playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
 
 			var ereward=[];
@@ -422,7 +434,6 @@
 			var key = e.keyCode ? e.keyCode : e.which;
 			var object;
 			var target;
-
 				//Read key inputs
 				//p for place
 				if (key == 80) {
@@ -516,13 +527,13 @@
 				else if(key==71){
 					command.push("g");
 				}
-				
-				
+
+
 				//Escape Command
 				if(key==27){
 					command=[];
 				}
-				
+
 				//Cycle through deck with right and left arrow
 				if(key==39&&flipped==2){
 					var object = deck[0];
@@ -542,7 +553,7 @@
 					var object = reward.pop();
 					reward.splice(0,0,object);
 				}
-				
+
 				var mark1=0;
 				var mark2=0;
 				//Press Enter for full command
@@ -572,7 +583,7 @@
 						console.log(hand[hand.length-1].image);
 						console.log(hand[hand.length-1]);
 					}
-					
+
 					//Flip
 					if(command[0]=="f")
 					{
@@ -590,7 +601,7 @@
 							alert("Flipped = 0");
 						}
 					}
-					
+
 					//Add or subtract values AKA Math
 					//Ex: ms1h+1 is math->support1->health->add->1
 					//		mls2c-2 is math->leader->skill 2->cooldown->minus->2
@@ -717,7 +728,7 @@
 							}
 						}
 					}
-					
+
 					//Place
 					if(command[0]=="p"){
 						var c=1;
@@ -867,7 +878,9 @@
 						else if(command[c]=="a"){
 							c++;
 							arena=object;
+							socket.emit('arenaUpdate', object);
 							console.log(arena.image+"    Arena Image");
+							//COLIN
 						}
 						else if(command[c]=="d"){
 							c++;
@@ -920,7 +933,7 @@
 						mark1=0;
 						mark2=0;
 					}
-					
+
 					//Shuffle
 					if(command[0]=="s"){
 						if(command[1]=="v"){
@@ -933,11 +946,39 @@
 					}
 					command=[];
 				}
-
 			}
 
 			function createDeck(text){
-				//Send up to the backend for a deck creator and to add to decklist
+				var groupings = text.split("\n\n");
+				var heroes_ = groupings[0].split("\n").slice(1);
+				var deck_ = groupings[1].split("\n").slice(1);
+				var reward_ = groupings[2].split("\n").slice(1);
+				var decklist = [[],[],[]];
+
+
+				for(i = 0; i < heroes_.length; i++){
+					var temp = heroes_[i].split("-");
+					for(copies = 0; copies < temp[0]; copies++){
+						decklist[0].push(temp[1]);
+					}
+				}
+
+				for(i = 0; i < deck_.length; i++){
+					var temp = deck_[i].split("-");
+					for(copies = 0; copies < temp[0]; copies++){
+						decklist[1].push(temp[1]);
+					}
+				}
+
+				for(i = 0; i < reward_.length; i++){
+					var temp = reward_[i].split("-");
+					for(copies = 0; copies < temp[0]; copies++){
+						decklist[2].push(temp[1]);
+					}
+				}
+
+				console.log(decklist);
+				socket.emit('deckInit', decklist);
 				shuffle(deck);
 				shuffle(reward);
 			}
@@ -1142,7 +1183,7 @@
 						}
 					}
 					overlay=[];
-					
+
 					var source=document.getElementById("body");
 					var text = document.createElement("p");
 					//Leader overlay
@@ -1155,7 +1196,7 @@
 					text.innerHTML = "HP:"+leader.hp+"<br />"+"DEN:"+leader.den;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					if(leaderSkills[0].name.length>0){
 						var text = document.createElement("p");
 						//Leader skill 1 overlay
@@ -1168,7 +1209,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(leaderSkills[1].name.length>0){
 						var text = document.createElement("p");
 						//Leader skill 2 overlay
@@ -1181,7 +1222,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(leaderSkills[2].name.length>0){
 						var text = document.createElement("p");
 						//Leader skill 3 overlay
@@ -1194,7 +1235,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					var text = document.createElement("p");
 					//Reward overlay
 					text.id="rewardNum";
@@ -1205,7 +1246,7 @@
 					text.innerHTML = reward.length;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					var text = document.createElement("p");
 					//Vault overlay
 					text.id="vaultNum";
@@ -1216,7 +1257,7 @@
 					text.innerHTML = deck.length;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					if(support[0].name.length>0){
 						var text = document.createElement("p");
 						//Support1 overlay
@@ -1229,7 +1270,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(support[1].name.length>0){
 						var text = document.createElement("p");
 						//Support2 overlay
@@ -1242,7 +1283,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(support[2].name.length>0){
 						var text = document.createElement("p");
 						//Support3 overlay
@@ -1255,7 +1296,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(support[3].name.length>0){
 						var text = document.createElement("p");
 						//Support4 overlay
@@ -1268,7 +1309,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					var text = document.createElement("p");
 					//Council1 overlay
 					text.id="council1Num";
@@ -1279,7 +1320,7 @@
 					text.innerHTML = "DEN:"+council[0].den;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					var text = document.createElement("p");
 					//Council2 overlay
 					text.id="council2Num";
@@ -1290,7 +1331,7 @@
 					text.innerHTML = "DEN:"+council[1].den;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					var text = document.createElement("p");
 					//Council3 overlay
 					text.id="council3Num";
@@ -1301,7 +1342,7 @@
 					text.innerHTML = "DEN:"+council[2].den;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					var text = document.createElement("p");
 					//Council4 overlay
 					text.id="council4Num";
@@ -1312,7 +1353,7 @@
 					text.innerHTML = "DEN:"+council[3].den;
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					//Enemy Overlay
 					console.log("Starting enemy overlay");
 					var text = document.createElement("p");
@@ -1329,7 +1370,7 @@
 					console.log(text.innerHTML+"  "+text.id+"  "+text.style.left+"   "+source.id);
 					source.appendChild(text);
 					overlay.push(text);
-					
+
 					if(enemyArea[5][0].name.length>0){
 						var text = document.createElement("p");
 						//Support1 overlay
@@ -1342,7 +1383,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(enemyArea[5][1].name.length>0){
 						var text = document.createElement("p");
 						//Support2 overlay
@@ -1355,7 +1396,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(enemyArea[5][2].name.length>0){
 						var text = document.createElement("p");
 						//Support3 overlay
@@ -1368,7 +1409,7 @@
 						source.appendChild(text);
 						overlay.push(text);
 					}
-					
+
 					if(enemyArea[5][3].name.length>0){
 						var text = document.createElement("p");
 						//Support4 overlay
@@ -1382,7 +1423,7 @@
 						overlay.push(text);
 					}
 				}
-				
+
 				function placeHand(){
 					if(imgHand.length>8){
 						for(i=0;i<imgHand.length;i++){
@@ -1694,7 +1735,7 @@
 					c.fillText(command,cw*8.5,ch*3+s*10);
 
 
-					
+
 					if(setUp<2){
 						c.fillStyle="grey";
 						c.fillRect(0,0,bw,bh);
@@ -1705,8 +1746,8 @@
 							selectLeader();
 						}
 
-						
-						
+
+
 					}
 					//Overlay
 					if(setUp==2){
@@ -1813,6 +1854,8 @@
 							minutes=minutes+1;
 							time=time-60;
 						}
+
+						//COLIN
 						playerArea=[reward,leader,leaderSkills,arena,dungeon,support,deck,council,councilSkills];
 						socket.emit('boardUpdate', playerArea);
 						redraw();
