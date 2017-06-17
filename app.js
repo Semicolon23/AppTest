@@ -34,6 +34,7 @@ io.on('connection', function(socket){
 	socket.on('deckInit', function(data){
 		//DB REF GOES HERE, PUT CARDS INTO VAR DECK
 
+		//lol
 
 		//*************************************
 		socket.emit(deckInit, deck);
