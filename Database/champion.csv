@@ -1,0 +1,11 @@
+Name,Health,Attack,Effect
+champion1,3,50,When this Champion basic attacks: if the Cavea is full deal 1 additional damage.
+champion2,3,50,If the enemy Leader is a hero deal 2 additional damage.
+champion3,3,50,If champion3 defeats an opponent suport with a skill: that opponent may not play a support in that cavea slot next turn.
+champion4,3,50,Campion4 may have an additional skill attatched.
+champion5,3,50,Once suring your turn: you may use an opponents council members skill without paying its Den cost.
+champion6,3,50,If Champion6 does not use a skill this turn: he may basic atack twice.
+champion7,3,50,If champion7 does not use a skill this turn: when he basic attacks choose one skill attached to your opponents leader: they can not use that skill or use Den to buy it back.
+SpearGuy,3,50,SpearGuy may have an additional skill atatched: If spear is attached to SpearGuy all of his skills cost one les Den to buy.
+champion9,3,50,Champion9 may not have skills equiped: his basic attack does 8 damage.
+champion10,3,50,Champion10 may not deal damage: if Champion10 survives 10 turns you win the game.

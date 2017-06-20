@@ -1,0 +1,49 @@
+name,card type,hp,attack,reflex,effect
+support2,support,3,3,FALSE,Pay 2 Den: your Champions Skills deal an additional 1 damage to Champions and Supports this turn.
+support3,support,3,3,FALSE,If this is your only Support your Champion may Basic Attack twice this Brawl Phase.
+support4,support,3,3,FALSE,If this is your only Support prevent all damage that would be dealt to your Champion by enemy Supports.
+support6,support,3,3,FALSE,When this Support enters the Arena: heal your Champion for 3 health.
+support8,support,3,3,FALSE,When this Support enters the Arena: draw 2 cards.
+support9,support,4,4,FALSE,Sacrifice: draw 3 cards.
+support10,support,4,4,FALSE,Sacrifice: Arrest target Support when it enters the Arena.
+support12,support,3,3,FALSE,When this Support enters the Arena: deal 3 damage to an enemy Support.
+support13,support,5,5,FALSE,Sacrifice: deal 5 damage to an enemy Champion or 5 damage to an enemy Support.
+support14,support,5,5,FALSE,Sacrifice: this Support produces 2 Den. This Den may only be used to activate the effects of other Supports in your Cavea.
+support15,support,3,3,FALSE,Sacrifice: search your Vault for a Support Card and add it to your hand.
+support17,support,3,3,FALSE,Sacrifice: put a Support from your Dungeon into your hand.
+support18,support,3,3,FALSE,Sacrifice: shuffle a Reward card from your Dungeon back into your reward deck.
+support20,support,3,3,FALSE,When this Support enters the Arena: deal 1 damage to each support an enemy controls.
+support21,support,3,3,FALSE,When this Support enters the Arena: heal 1 damage off of your Champion and each Support you control.
+support22,support,3,3,FALSE,Sacrifice: deal 3 damage to an enemy Support.
+support23,support,3,3,FALSE,Sacrifice: heal 5 damage from your Champion.
+support24,support,3,3,FALSE,When this Support enters the Arena heal all damage from all Supports in your Cavea.
+support28,support,2,2,FALSE,As long as this Support is in your Cavea: prevent all damage that would be dealt to your Champion by all enemy supports.
+support29,support,3,3,FALSE,When this Support enters the Arena: Draw cards equal to the number of Supports in your Cavea. You may not play Supports for the rest of your turn.
+support30,support,2,2,FALSE,Sacrifice: deal 1 damage to an enemy Base. (C)
+support31,support,3,3,FALSE,During each enemies Pass phase draw a card.  When this Support is Defeated deal 1 damage to an enemy Champion.
+support32,support,2,2,FALSE,Sacrifice: heal 1 damage from your Base. (C)
+support33,support,3,3,FALSE,If this Support has full health you may heal 1 damage from your Champion whenever you draw a card.
+support34,support,1,1,FALSE,Pay 1 Den: Deal 3 damage to an enemy Champion or 1 damage to an enemy Support. You may only use this supports effect once per turn.
+support35,support,2,2,FALSE,If you control 3 Supports named () your opponent discards their hand and skips their next Draw phase. Draw 2 cards.
+support36,support,5,5,FALSE,Sacrifice: Search your Vault for a Champion and put them in your council. (C)
+support37,support,2,2,FALSE,When this Support enters the Arena: you may discard a skill attached to your Champion.
+support38,support,2,2,FALSE,While this Support is in the Arena: prevent all damage dealt to other Supports in your Cavea from enemy Supports or Champions.
+support39,support,3,3,FALSE,When this Support enters the Arena: draw a card. If this Support is discarded during your Judgement Phase: draw 2 cards.
+support40,support,4,4,FALSE,Sacrifice: put 1 Den on one of your Council Champions.
+support42,support,3,3,FALSE,Arrest next Support your opponent plays.
+support45,support,2,2,FALSE,Discard a Support with the same name as this one: Prevent all damage that would be dealt to your champion this turn.
+support46,support,3,3,FALSE,All Supports in your Cavea have their HP increased by 1.
+support47,support,2,2,FALSE,Pay 2 Den: this Support becomes a copy of any Support until the end of the turn.
+support48,support,3,3,FALSE,Sacrifice: look at your opponents hand and discard 2 cards.
+support1,trial,7,0,FALSE,Your Champions Basic Attack deals 1 more damage for each Support you have in your Cavea. You may only have one Support named () in your Cavea.
+support5,trial,7,0,TRUE,Pay 1 Den: prevent the next damage that would be dealt from any source.
+support7,trial,7,0,FALSE,Pay 1 Den: draw 1 card. You may not activate this Supports effect on your first turn.
+support11,trial,7,0,FALSE,Pay 1 Den: deal 1 damage to an enemy Champion or Support.
+support16,trial,7,0,FALSE,Pay 3 Den: search your Vault for any card.
+support19,trial,7,0,FALSE,Pay 1 Den: look at the top 2 cards of your Vault. You may put them back on top of your Vault in any order.
+support25,trial,7,0,FALSE,Pay 2 Den: search your Vault for a Support card.
+support26,trial,7,0,FALSE,Pay 5 Den: Search your Vault for any 3 Cards.
+support27,trial,7,0,FALSE,Pay 1 Den: deal 2 damage to an enemy Champion.
+support41,trial,7,0,FALSE,Pay 2 Den: discard your hand: draw 3 cards.
+support43,trial,7,0,FALSE,Pay 2 Den: look at the top 4 cards of your Vault. Put 1 in your hand and the other 3 on the bottom of your Vault in any order.
+support44,trial,7,0,FALSE,Pay 2 Den: Discard your opponents Arena Card

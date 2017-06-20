@@ -1,0 +1,17 @@
+Name,Skill Type,Buy Back Cost,Reflex,Effect
+skill1_1,FALSE,2,FALSE,Deal 2 damage to an oponents champion and 1 damage to an enemy support
+skill1_2,FALSE,2,FALSE,Deal 2 damage to 2 Supports or Trials in your opponents Cavea.
+skill1_3,FALSE,3,TRUE,Prevent the next 3 damage dealt by your opponents laeder champion
+skill1_4,FALSE,3,TRUE,Deal 3 damage to an opponents support
+skill1_5,FALSE,2,FALSE,Deal 4 damage to the opponents leader Champion
+skill1_6,FALSE,0,FALSE,When you defeat a support: Draw a card and heal 1 damage.
+Supreme1_1,TRUE,5,FALSE,Deal 3 damage to each support in your opponents Cavea.
+Supreme1_2,TRUE,4,FALSE,Deal 5 damage to your opponents leader and 5 damage to an enemy support
+skill2_1,FALSE,1,FALSE,Deal 3 damage to your opponents leader
+skill2_2,FALSE,3,FALSE,Deal 3 damage to your opponents leader and 2 damage to an enemy support or trial
+skill2_3,FALSE,3,FALSE,Champion2 takes no damage from your opponents next basic attack
+skill2_4,FALSE,0,FALSE,your first skill each turn deals 1 additional damage
+skill2_5,FALSE,4,FALSE,6 damage to your opponents leader
+skill2_6,FALSE,2,FALSE,deal 3 damage to a support in your opponents Cavea
+Supreme2_1,TRUE,4,FALSE,increase the buy back cost of an opponents skill by 2
+Supreme2_2,TRUE,5,FALSE,flip a coin: If heads deal 8 damage to the opponents leader: if tails deal 3 damage to 2 supports in your opponents Cavea
