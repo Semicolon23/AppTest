@@ -1,5 +1,6 @@
 //***Most likely won't need to change***//
 var express = require('express');
+var pg = require('pg');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -32,7 +33,25 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('deckInit', function(data){
-		//DB REF GOES HERE, PUT CARDS INTO VAR DECK
+	//DB REF GOES HERE, PUT CARDS INTO VAR DECK
+		
+	
+
+	pg.defaults.ssl = true;
+	pg.connect(process.env.postgres://zzfoijmjnpckbt:72b109361166e43307b0c3e29c50e4f44578a77d15398669a70e578b11f80ebf@ec2-23-23-93-255.compute-1.amazonaws.com:5432/d5j5918lt7is6t'),
+	function(err, client) 
+	{
+		if (err) throw err;
+		
+		console.log('Connected to postgres! Getting schemas...');
+		//client
+		//.query('SELECT table_schema,table_name FROM information_schema.tables;')
+		//.on('row', function(row) {
+		//console.log(JSON.stringify(row));
+	});
+	
+	
+		
 		
 		//io.emit('deckInit', data);
 		//db url below:
@@ -41,6 +60,8 @@ io.on('connection', function(socket){
 
 		//*************************************
 		socket.emit(deckInit, deck);
+		
+		
 	});
 
 	//+++ADD NEW LISTENERS HERE IF NEEDED+++//
