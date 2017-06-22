@@ -37,6 +37,7 @@
 		socket.on('deckInit', function(data){
 			//WHATEVER HAPPENS TO DECK GOES HERE (after DB)
 
+			deck=data;
 
 			//******************************
 		});
@@ -992,16 +993,13 @@
 				shuffle(reward);
 			}
 			
-			function deckInit(decklist)
-			{
-				//generates deck with information from decklist and db
-				//1: champions
-				//2: supports/skills
-				//3: reward
+			//function deckInit(decklist)
+			//{
 				
 				
 				
-			}
+				
+			//}
 
 			function chooseDeck(text){
 				//Choose the deck with this name
