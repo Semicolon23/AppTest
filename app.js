@@ -44,10 +44,13 @@ io.on('connection', function(socket){
 		if (err) throw err;
 		
 		console.log('Connected to postgres! Getting schemas...');
-		//client
-		//.query('SELECT * FROM champions;')
-		//on('row', function(row) {
-		//console.log(JSON.stringify(row));
+		
+		client
+		.query('SELECT * FROM champions;')
+		on('row', function(row) {
+		console.log(JSON.stringify(row));
+		
+		console.log('retrieved champions');
 	});
 	
 	
