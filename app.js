@@ -45,9 +45,9 @@ io.on('connection', function(socket){
 		
 		console.log('Connected to postgres! Getting schemas...');
 		//client
-		//.query('SELECT table_schema,table_name FROM information_schema.tables;')
-		//.on('row', function(row) {
-		//console.log(JSON.stringify(row));
+		pg.query('SELECT * FROM champions;')
+		on('row', function(row) {
+		console.log(JSON.stringify(row));
 	});
 	
 	

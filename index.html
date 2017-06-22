@@ -9,14 +9,11 @@
 		var socket = io().connect('http://localhost:5000');
 		//var db = io().connect('postgres://zzfoijmjnpckbt:72b109361166e43307b0c3e29c50e4f44578a77d15398669a70e578b11f80ebf@ec2-23-23-93-255.compute-1.amazonaws.com:5432/d5j5918lt7is6t');
 		
-		pg.query('SELECT * from champion;')
-		.on('row', function(row) {
-		console.log(JSON.stringify(row));
-
-		//client
-		//.query('SELECT table_schema,table_name FROM information_schema.tables;')
+		//pg.query('SELECT * from champion;')
 		//.on('row', function(row) {
 		//console.log(JSON.stringify(row));
+
+		
 		
 		/* Listens for the boardUpdate from server. When detected,
 		it takes enemy board data and puts it into it's right side */
