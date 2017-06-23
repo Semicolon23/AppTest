@@ -35,7 +35,7 @@ io.on('connection', function(socket){
 
 	socket.on('deckInit', function(data){
 	//DB REF GOES HERE, PUT CARDS INTO VAR DECK
-		console.log('DECKINIT APPJS ');
+		var deck;
 		pg.defaults.ssl = true;
 		pg.connect(process.env.postgres, function(err, client)
 		{
@@ -43,30 +43,20 @@ io.on('connection', function(socket){
 		
 			console.log('Connected to postgres! Getting schemas...');
 		
+			//query database for card information, place into deck
+			
+			
 			client
 			.query('SELECT * FROM champions;')
 			.on('row', function(row) 
 			{
 				console.log(JSON.stringify(row));
-		
-				console.log('retrieved champions');
+				///add console logs in order to check for proper procedure
 			});
 		});
+		socket.broadcast.emit('deckInit', data); 
 	});
 	
-	
-		
-		
-		//io.emit('deckInit', data);
-		//db url below:
-		//postgres://zzfoijmjnpckbt:72b109361166e43307b0c3e29c50e4f44578a77d15398669a70e578b11f80ebf@ec2-23-23-93-255.compute-1.amazonaws.com:5432/d5j5918lt7is6t
-
-
-		//*************************************
-		//socket.emit(deckInit, deck);
-		
-		
-
 
 	//+++ADD NEW LISTENERS HERE IF NEEDED+++//
 
