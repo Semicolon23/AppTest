@@ -62,3 +62,18 @@ socket.emit('event', data);
 This will emit an event to be detected solely by the server. 
  
 It should be noted that while I described how the io.emit and socket.broadcast.emit emitters work server side, I never actually thought to try them client side. So while I assume it would cause errors, it might work in it's own unique way. 
+
+
+
+
+***DATABASE***
+
+The database itself is not very complicated. Join statements will come about through the image attribute. The database can be made with any schema, so long as the app.js query code accurately reflects this.
+Image attribute is a varchar (variable character) field that will hold the URL of the image itself. I recommend getting a cloud storage service such as S3 (AWS) in order to store the images,
+and having the database refer to the URLs produced by the storage service. Currently, the database is divided by card type, with table consisting of the relevant information for each accordingly.
+As stated before this design is not hard set, and can be modified to your preference or specification. In order to make the query process more efficient, please use the Java file in the 'Database'
+folder of the project. This folder will also contain the database itself, along with the CSV files for each card type. 
+
+
+
+

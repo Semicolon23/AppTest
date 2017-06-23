@@ -6,6 +6,11 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var PORT = process.env.PORT || 5000;
 connections=[];
+
+//DB Credentials holds the URL for the database in heroku
+//According to Heroku, the credentials change every so often
+//so should you be unable to connect to the DB, check to make sure
+//this link here is correct and up to date
 var postgres = 'postgres://zzfoijmjnpckbt:72b109361166e43307b0c3e29c50e4f44578a77d15398669a70e578b11f80ebf@ec2-23-23-93-255.compute-1.amazonaws.com:5432/d5j5918lt7is6t';
 
 app.get('/', function(req,res){
