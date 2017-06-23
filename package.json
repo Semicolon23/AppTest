@@ -6,9 +6,10 @@
   "scripts": {
     "start": "node app"
   },
-  "dependencies":{
-  	"express":"*",
-    "socket.io":"*"
+  "dependencies": {
+    "express": "*",
+    "pg": "6.4.0",
+    "socket.io": "*"
   },
   "repository": {
     "type": "git",

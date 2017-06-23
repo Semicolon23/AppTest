@@ -6,6 +6,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var PORT = process.env.PORT || 5000;
 connections=[];
+var postgres = 'postgres://zzfoijmjnpckbt:72b109361166e43307b0c3e29c50e4f44578a77d15398669a70e578b11f80ebf@ec2-23-23-93-255.compute-1.amazonaws.com:5432/d5j5918lt7is6t';
 
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
@@ -36,8 +37,7 @@ io.on('connection', function(socket){
 	//DB REF GOES HERE, PUT CARDS INTO VAR DECK
 		console.log('DECKINIT APPJS ');
 		pg.defaults.ssl = true;
-		pg.connect(process.env.postgres://zzfoijmjnpckbt:72b109361166e43307b0c3e29c50e4f44578a77d15398669a70e578b11f80ebf@ec2-23-23-93-255.compute-1.amazonaws.com:5432/d5j5918lt7is6t,
-		function(err, client) 
+		pg.connect(process.env.postgres, function(err, client)
 		{
 			if (err) throw err;
 		
@@ -45,12 +45,14 @@ io.on('connection', function(socket){
 		
 			client
 			.query('SELECT * FROM champions;')
-			on('row', function(row) {
-			console.log(JSON.stringify(row)));
+			.on('row', function(row) 
+			{
+				console.log(JSON.stringify(row));
 		
-			console.log('retrieved champions');
+				console.log('retrieved champions');
+			});
 		});
-
+	});
 	
 	
 		
@@ -64,7 +66,7 @@ io.on('connection', function(socket){
 		//socket.emit(deckInit, deck);
 		
 		
-	});
+
 
 	//+++ADD NEW LISTENERS HERE IF NEEDED+++//
 
